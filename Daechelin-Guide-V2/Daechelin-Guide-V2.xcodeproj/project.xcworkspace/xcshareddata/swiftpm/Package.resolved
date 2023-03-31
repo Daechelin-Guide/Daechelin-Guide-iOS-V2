@@ -8,6 +8,15 @@
         "branch" : "master",
         "revision" : "fd87f7ce7461197ea5af6e4a865168b8fc913ee0"
       }
+    },
+    {
+      "identity" : "linknavigator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/interactord/LinkNavigator",
+      "state" : {
+        "branch" : "main",
+        "revision" : "be751090fb3976944f8712631b5cf62ba168fc64"
+      }
     }
   ],
   "version" : 2

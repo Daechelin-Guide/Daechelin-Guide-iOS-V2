@@ -20,6 +20,7 @@
 		52DB6E2829D6F9E30002DACC /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2729D6F9E30002DACC /* data.swift */; };
 		52DB6E2C29D704430002DACC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2B29D704430002DACC /* MenuView.swift */; };
 		52DB6E2F29D704E40002DACC /* MealTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2E29D704E40002DACC /* MealTimeView.swift */; };
+		52DB6E3229D711520002DACC /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 52DB6E3129D711520002DACC /* LinkNavigator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DB6E3229D711520002DACC /* LinkNavigator in Frameworks */,
 				52DB6E1E29D6F6B10002DACC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +177,7 @@
 			name = "Daechelin-Guide-V2";
 			packageProductDependencies = (
 				52DB6E1D29D6F6B10002DACC /* Alamofire */,
+				52DB6E3129D711520002DACC /* LinkNavigator */,
 			);
 			productName = "Daechelin-Guide-V2";
 			productReference = 52DB6DFD29D6E6680002DACC /* Daechelin-Guide-V2.app */;
@@ -206,6 +209,7 @@
 			mainGroup = 52DB6DF429D6E6680002DACC;
 			packageReferences = (
 				52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				52DB6E3029D711520002DACC /* XCRemoteSwiftPackageReference "LinkNavigator" */,
 			);
 			productRefGroup = 52DB6DFE29D6E6680002DACC /* Products */;
 			projectDirPath = "";
@@ -464,6 +468,14 @@
 				kind = branch;
 			};
 		};
+		52DB6E3029D711520002DACC /* XCRemoteSwiftPackageReference "LinkNavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/interactord/LinkNavigator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -471,6 +483,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		52DB6E3129D711520002DACC /* LinkNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52DB6E3029D711520002DACC /* XCRemoteSwiftPackageReference "LinkNavigator" */;
+			productName = LinkNavigator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

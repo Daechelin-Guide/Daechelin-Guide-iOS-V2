@@ -26,13 +26,14 @@ struct MealTimeView: View {
                 Group {
                     switch mealTime {
                     case "조식":
-                        AnyView(Color.orange)
+                        AnyView(Color("\(mealTime)Color"))
                     case "중식":
-                        AnyView(Color.blue)
+                        AnyView(Color("\(mealTime)Color"))
                     default:
-                        AnyView(Color.purple)
+                        AnyView(Color("\(mealTime)Color"))
                     }
                 }
+                    .cornerRadius(13)
             )
     }
 }
