@@ -8,19 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		52DB6E0129D6E6680002DACC /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E0029D6E6680002DACC /* AppMain.swift */; };
-		52DB6E0329D6E6680002DACC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E0229D6E6680002DACC /* ContentView.swift */; };
+		52DB6E0329D6E6680002DACC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E0229D6E6680002DACC /* MainView.swift */; };
 		52DB6E0529D6E66A0002DACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52DB6E0429D6E66A0002DACC /* Assets.xcassets */; };
-		52DB6E0F29D6E9670002DACC /* nextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E0E29D6E9670002DACC /* nextView.swift */; };
+		52DB6E0F29D6E9670002DACC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E0E29D6E9670002DACC /* MealView.swift */; };
 		52DB6E1229D6EA5C0002DACC /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E1129D6EA5C0002DACC /* LaunchScreenView.swift */; };
+		52DB6E1729D6EBA50002DACC /* ViewExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E1629D6EBA50002DACC /* ViewExtenstion.swift */; };
+		52DB6E1A29D6ED2D0002DACC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E1929D6ED2D0002DACC /* API.swift */; };
+		52DB6E1E29D6F6B10002DACC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 52DB6E1D29D6F6B10002DACC /* Alamofire */; };
+		52DB6E2329D6F6E10002DACC /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2229D6F6E10002DACC /* MainModel.swift */; };
+		52DB6E2529D6F8440002DACC /* PublicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2429D6F8440002DACC /* PublicFunction.swift */; };
+		52DB6E2829D6F9E30002DACC /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2729D6F9E30002DACC /* data.swift */; };
+		52DB6E2C29D704430002DACC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2B29D704430002DACC /* MenuView.swift */; };
+		52DB6E2F29D704E40002DACC /* MealTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB6E2E29D704E40002DACC /* MealTimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		52DB6DFD29D6E6680002DACC /* Daechelin-Guide-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daechelin-Guide-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DB6E0029D6E6680002DACC /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
-		52DB6E0229D6E6680002DACC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		52DB6E0229D6E6680002DACC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		52DB6E0429D6E66A0002DACC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		52DB6E0E29D6E9670002DACC /* nextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nextView.swift; sourceTree = "<group>"; };
+		52DB6E0E29D6E9670002DACC /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		52DB6E1129D6EA5C0002DACC /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		52DB6E1629D6EBA50002DACC /* ViewExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtenstion.swift; sourceTree = "<group>"; };
+		52DB6E1929D6ED2D0002DACC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		52DB6E2229D6F6E10002DACC /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		52DB6E2429D6F8440002DACC /* PublicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFunction.swift; sourceTree = "<group>"; };
+		52DB6E2729D6F9E30002DACC /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		52DB6E2B29D704430002DACC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		52DB6E2E29D704E40002DACC /* MealTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DB6E1E29D6F6B10002DACC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +78,9 @@
 		52DB6E1029D6EA110002DACC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				52DB6E0229D6E6680002DACC /* ContentView.swift */,
-				52DB6E0E29D6E9670002DACC /* nextView.swift */,
 				52DB6E1329D6EA600002DACC /* LaunchScreen */,
+				52DB6E1B29D6F5A00002DACC /* MainView */,
+				52DB6E0E29D6E9670002DACC /* MealView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -80,10 +96,65 @@
 		52DB6E1429D6EAC00002DACC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				52DB6E0429D6E66A0002DACC /* Assets.xcassets */,
 				52DB6E0029D6E6680002DACC /* AppMain.swift */,
+				52DB6E0429D6E66A0002DACC /* Assets.xcassets */,
+				52DB6E1829D6ED1D0002DACC /* Network */,
+				52DB6E2929D703F80002DACC /* Components */,
+				52DB6E1529D6EB8D0002DACC /* Extentions */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		52DB6E1529D6EB8D0002DACC /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E1629D6EBA50002DACC /* ViewExtenstion.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		52DB6E1829D6ED1D0002DACC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E1929D6ED2D0002DACC /* API.swift */,
+				52DB6E2729D6F9E30002DACC /* data.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		52DB6E1B29D6F5A00002DACC /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E0229D6E6680002DACC /* MainView.swift */,
+				52DB6E2229D6F6E10002DACC /* MainModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		52DB6E2629D6F84F0002DACC /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E2429D6F8440002DACC /* PublicFunction.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		52DB6E2929D703F80002DACC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E2A29D7042D0002DACC /* Views */,
+				52DB6E2629D6F84F0002DACC /* Functions */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		52DB6E2A29D7042D0002DACC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E2B29D704430002DACC /* MenuView.swift */,
+				52DB6E2E29D704E40002DACC /* MealTimeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +173,9 @@
 			dependencies = (
 			);
 			name = "Daechelin-Guide-V2";
+			packageProductDependencies = (
+				52DB6E1D29D6F6B10002DACC /* Alamofire */,
+			);
 			productName = "Daechelin-Guide-V2";
 			productReference = 52DB6DFD29D6E6680002DACC /* Daechelin-Guide-V2.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +204,9 @@
 				Base,
 			);
 			mainGroup = 52DB6DF429D6E6680002DACC;
+			packageReferences = (
+				52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 52DB6DFE29D6E6680002DACC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,8 +233,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DB6E1229D6EA5C0002DACC /* LaunchScreenView.swift in Sources */,
-				52DB6E0329D6E6680002DACC /* ContentView.swift in Sources */,
-				52DB6E0F29D6E9670002DACC /* nextView.swift in Sources */,
+				52DB6E2F29D704E40002DACC /* MealTimeView.swift in Sources */,
+				52DB6E0329D6E6680002DACC /* MainView.swift in Sources */,
+				52DB6E0F29D6E9670002DACC /* MealView.swift in Sources */,
+				52DB6E2329D6F6E10002DACC /* MainModel.swift in Sources */,
+				52DB6E2529D6F8440002DACC /* PublicFunction.swift in Sources */,
+				52DB6E2C29D704430002DACC /* MenuView.swift in Sources */,
+				52DB6E1729D6EBA50002DACC /* ViewExtenstion.swift in Sources */,
+				52DB6E1A29D6ED2D0002DACC /* API.swift in Sources */,
+				52DB6E2829D6F9E30002DACC /* data.swift in Sources */,
 				52DB6E0129D6E6680002DACC /* AppMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,13 +375,12 @@
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "대슐랭 가이드";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -326,13 +409,12 @@
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "대슐랭 가이드";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52DB6E1D29D6F6B10002DACC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52DB6DF529D6E6680002DACC /* Project object */;
 }

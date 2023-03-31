@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct LaunchScreenView: View {
     
@@ -13,18 +14,21 @@ struct LaunchScreenView: View {
     
     var body: some View {
         if launched {
-            ContentView()
+            MainView()
         } else {
-            HStack {
-                
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        launched.toggle()
+            ZStack {
+                Image("LaunchScreenLogo")
+                    .resizable()
+                    .frame(width: 164, height: 140)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                            withAnimation(.easeInOut(duration: 0.7)) {
+                                launched.toggle()
+                            }
+                        }
                     }
-                }
             }
+            .setBackground()
         }
     }
 }
