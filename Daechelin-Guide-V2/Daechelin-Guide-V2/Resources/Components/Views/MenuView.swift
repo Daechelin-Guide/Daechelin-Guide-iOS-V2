@@ -22,18 +22,28 @@ struct MenuView: View {
     var body: some View {
         
         Button(action: {
-        
+            
         }) {
-            VStack {
-                Image("\(mealTime)")
-                MealTimeView("\(mealTime)")
+            HStack {
+                VStack(spacing: 0) {
+                    Image("\(mealTime)")
+                    
+                    MealTimeView("\(mealTime)")
+                }
+                .padding(.leading, 20)
+                
+                Spacer()
+                
+                Text("\(menu)")
+                    .setFont(14, .regular)
+                    .foregroundColor(Color("textColor"))
+                    .multilineTextAlignment(.leading)
+                    .padding(.trailing, 20)
             }
-            Text("\(menu)")
-                .setFont(14, .regular)
-                .foregroundColor(Color("textColor"))
         }
+        
         .frame(height: 120)
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth:  .infinity)
         .background(.white)
         .cornerRadius(18)
         .overlay(

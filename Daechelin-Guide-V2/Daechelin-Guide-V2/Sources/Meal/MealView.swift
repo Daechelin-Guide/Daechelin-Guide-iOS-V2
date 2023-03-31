@@ -10,6 +10,9 @@ import SwiftUI
 struct MealView: View {
     
     var body: some View {
-        Text("dd")
+        
+        ScrollView {
+            
+        }
     }
 }

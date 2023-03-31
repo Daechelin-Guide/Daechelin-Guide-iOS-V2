@@ -16,19 +16,18 @@ struct LaunchScreenView: View {
         if launched {
             MainView()
         } else {
-            ZStack {
-                Image("LaunchScreenLogo")
-                    .resizable()
-                    .frame(width: 164, height: 140)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
-                            withAnimation(.easeInOut(duration: 0.7)) {
-                                launched.toggle()
-                            }
+            
+            Image("LaunchScreenLogo")
+                .resizable()
+                .frame(width: 164, height: 140)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                        withAnimation(.easeInOut(duration: 0.7)) {
+                            launched.toggle()
                         }
                     }
-            }
-            .setBackground()
+                }
+                .setBackground()
         }
     }
 }

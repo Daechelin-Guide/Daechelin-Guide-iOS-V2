@@ -9,12 +9,14 @@ import SwiftUI
 
 extension View {
     
-    @ViewBuilder func setFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> some View {
+    @ViewBuilder
+    func setFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> some View {
         self
             .font(.system(size: size, weight: weight))
     }
     
-    @ViewBuilder func setBackground() -> some View {
+    @ViewBuilder
+    func setBackground() -> some View {
         self
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("backgroundColor").ignoresSafeArea())

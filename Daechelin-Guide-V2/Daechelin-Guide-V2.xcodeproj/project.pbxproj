@@ -81,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				52DB6E1329D6EA600002DACC /* LaunchScreen */,
-				52DB6E1B29D6F5A00002DACC /* MainView */,
-				52DB6E0E29D6E9670002DACC /* MealView.swift */,
+				52DB6E1B29D6F5A00002DACC /* Main */,
+				52DB6E3429D7242D0002DACC /* Meal */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -124,13 +124,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		52DB6E1B29D6F5A00002DACC /* MainView */ = {
+		52DB6E1B29D6F5A00002DACC /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				52DB6E0229D6E6680002DACC /* MainView.swift */,
 				52DB6E2229D6F6E10002DACC /* MainModel.swift */,
 			);
-			path = MainView;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		52DB6E2629D6F84F0002DACC /* Functions */ = {
@@ -157,6 +157,14 @@
 				52DB6E2E29D704E40002DACC /* MealTimeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		52DB6E3429D7242D0002DACC /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				52DB6E0E29D6E9670002DACC /* MealView.swift */,
+			);
+			path = Meal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +218,7 @@
 			packageReferences = (
 				52DB6E1C29D6F6B10002DACC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				52DB6E3029D711520002DACC /* XCRemoteSwiftPackageReference "LinkNavigator" */,
+				52DB6E3329D723A80002DACC /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 52DB6DFE29D6E6680002DACC /* Products */;
 			projectDirPath = "";
@@ -474,6 +483,14 @@
 			requirement = {
 				branch = main;
 				kind = branch;
+			};
+		};
+		52DB6E3329D723A80002DACC /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
