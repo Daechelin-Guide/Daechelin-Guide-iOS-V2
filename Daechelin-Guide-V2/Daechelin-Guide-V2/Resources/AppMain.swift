@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct Daechelin_Guide_V2App: App {
+struct AppMain: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchScreenView()
         }
     }
 }
