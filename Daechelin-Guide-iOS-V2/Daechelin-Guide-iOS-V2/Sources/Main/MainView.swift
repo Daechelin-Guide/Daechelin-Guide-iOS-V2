@@ -75,6 +75,38 @@ struct MainView: View {
                         ], isAnimated: true)
                     }
                     
+                    Button(action: {
+                        print("급식데이")
+                    }) {
+                        HStack {
+                            Image("mealday")
+                                .padding(.bottom, 6)
+                            
+                            VStack(alignment: .leading) {
+                                Text("대소고 맛잘알을 찾습니다!")
+                                    .setFont(18, .medium)
+                                    .foregroundColor(.black)
+                                
+                                Text("급식데이 투표하러 가기")
+                                    .setFont(14, .regular)
+                                    .foregroundColor(Color("textColor"))
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    .frame(height: 120)
+                    .frame(maxWidth:  .infinity)
+                    .background(.white)
+                    .cornerRadius(18)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color("급식데이Color"), lineWidth: 1)
+                    )
+                    .autocapitalization(.none)
+
+                    
                     Spacer()
                 }
                 .padding(.top, 20)

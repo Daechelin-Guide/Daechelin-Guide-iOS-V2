@@ -34,6 +34,11 @@
 		52ED108229D7E066009A4890 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106829D7E066009A4890 /* AppDelegate.swift */; };
 		52ED108329D7E066009A4890 /* AppRouteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106929D7E066009A4890 /* AppRouteGroup.swift */; };
 		52ED108429D7E066009A4890 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106A29D7E066009A4890 /* AppMain.swift */; };
+		52ED108729D7E241009A4890 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108629D7E241009A4890 /* ReviewView.swift */; };
+		52ED108929D7E24E009A4890 /* ReviewRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108829D7E24E009A4890 /* ReviewRouteBuilder.swift */; };
+		52ED108C29D7E2BC009A4890 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108B29D7E2BC009A4890 /* RankingView.swift */; };
+		52ED108E29D7E2C6009A4890 /* RankingRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */; };
+		52ED109029D7E2CE009A4890 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108F29D7E2CE009A4890 /* RankingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		52ED106829D7E066009A4890 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52ED106929D7E066009A4890 /* AppRouteGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouteGroup.swift; sourceTree = "<group>"; };
 		52ED106A29D7E066009A4890 /* AppMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		52ED108629D7E241009A4890 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		52ED108829D7E24E009A4890 /* ReviewRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRouteBuilder.swift; sourceTree = "<group>"; };
+		52ED108B29D7E2BC009A4890 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingRouteBuilder.swift; sourceTree = "<group>"; };
+		52ED108F29D7E2CE009A4890 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +119,10 @@
 				52ED104429D7E066009A4890 /* LaunchScreen */,
 				52ED105229D7E066009A4890 /* Main */,
 				52ED104929D7E066009A4890 /* Meal */,
+				52ED108529D7E21C009A4890 /* Review */,
+				52ED108A29D7E2B2009A4890 /* Ranking */,
 				52ED104D29D7E066009A4890 /* Setting */,
+				52ED109129D7E34B009A4890 /* Web */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -138,8 +151,6 @@
 			children = (
 				52ED105129D7E066009A4890 /* SettingView.swift */,
 				52ED104E29D7E066009A4890 /* SettingRouteBuilder.swift */,
-				52ED104F29D7E066009A4890 /* WebView.swift */,
-				52ED105029D7E066009A4890 /* WebViewRouteBuilder.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -147,9 +158,9 @@
 		52ED105229D7E066009A4890 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				52ED105329D7E066009A4890 /* MainModel.swift */,
 				52ED105429D7E066009A4890 /* MainView.swift */,
 				52ED105529D7E066009A4890 /* MainRouteBuilder.swift */,
+				52ED105329D7E066009A4890 /* MainModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -157,11 +168,12 @@
 		52ED105629D7E066009A4890 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				52ED105729D7E066009A4890 /* Network */,
 				52ED105A29D7E066009A4890 /* Assets.xcassets */,
+				52ED106629D7E066009A4890 /* Navigator */,
+				52ED105729D7E066009A4890 /* Network */,
 				52ED105B29D7E066009A4890 /* Components */,
 				52ED106429D7E066009A4890 /* Extentions */,
-				52ED106629D7E066009A4890 /* Navigator */,
+				52ED105C29D7E066009A4890 /* Functions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -178,7 +190,6 @@
 		52ED105B29D7E066009A4890 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				52ED105C29D7E066009A4890 /* Functions */,
 				52ED105E29D7E066009A4890 /* Views */,
 			);
 			path = Components;
@@ -195,19 +206,11 @@
 		52ED105E29D7E066009A4890 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				52ED105F29D7E066009A4890 /* Navigation.swift */,
 				52ED106129D7E066009A4890 /* MealTimeView.swift */,
-				52ED106229D7E066009A4890 /* New Group */,
 				52ED106329D7E066009A4890 /* MenuView.swift */,
+				52ED105F29D7E066009A4890 /* Navigation.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		52ED106229D7E066009A4890 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		52ED106429D7E066009A4890 /* Extentions */ = {
@@ -227,6 +230,34 @@
 				52ED106A29D7E066009A4890 /* AppMain.swift */,
 			);
 			path = Navigator;
+			sourceTree = "<group>";
+		};
+		52ED108529D7E21C009A4890 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				52ED108629D7E241009A4890 /* ReviewView.swift */,
+				52ED108829D7E24E009A4890 /* ReviewRouteBuilder.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		52ED108A29D7E2B2009A4890 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				52ED108B29D7E2BC009A4890 /* RankingView.swift */,
+				52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */,
+				52ED108F29D7E2CE009A4890 /* RankingModel.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		52ED109129D7E34B009A4890 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				52ED104F29D7E066009A4890 /* WebView.swift */,
+				52ED105029D7E066009A4890 /* WebViewRouteBuilder.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,12 +339,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52ED109029D7E2CE009A4890 /* RankingModel.swift in Sources */,
 				52ED108129D7E066009A4890 /* AppDependency.swift in Sources */,
 				52ED107629D7E066009A4890 /* MainView.swift in Sources */,
 				52ED108329D7E066009A4890 /* AppRouteGroup.swift in Sources */,
 				52ED107E29D7E066009A4890 /* MealTimeView.swift in Sources */,
 				52ED108029D7E066009A4890 /* ViewExtenstion.swift in Sources */,
 				52ED107429D7E066009A4890 /* SettingView.swift in Sources */,
+				52ED108929D7E24E009A4890 /* ReviewRouteBuilder.swift in Sources */,
 				52ED107229D7E066009A4890 /* WebView.swift in Sources */,
 				52ED107F29D7E066009A4890 /* MenuView.swift in Sources */,
 				52ED107B29D7E066009A4890 /* PublicFunction.swift in Sources */,
@@ -324,11 +357,14 @@
 				52ED108429D7E066009A4890 /* AppMain.swift in Sources */,
 				52ED106E29D7E066009A4890 /* MealRouteBuilder.swift in Sources */,
 				52ED107729D7E066009A4890 /* MainRouteBuilder.swift in Sources */,
+				52ED108729D7E241009A4890 /* ReviewView.swift in Sources */,
 				52ED106D29D7E066009A4890 /* LaunchScreenView.swift in Sources */,
+				52ED108C29D7E2BC009A4890 /* RankingView.swift in Sources */,
 				52ED107529D7E066009A4890 /* MainModel.swift in Sources */,
 				52ED107129D7E066009A4890 /* SettingRouteBuilder.swift in Sources */,
 				52ED106F29D7E066009A4890 /* mealModel.swift in Sources */,
 				52ED107329D7E066009A4890 /* WebViewRouteBuilder.swift in Sources */,
+				52ED108E29D7E2C6009A4890 /* RankingRouteBuilder.swift in Sources */,
 				52ED107029D7E066009A4890 /* MealView.swift in Sources */,
 				52ED108229D7E066009A4890 /* AppDelegate.swift in Sources */,
 			);
@@ -458,7 +494,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Daechelin-Guide-iOS-V2/Preview Content\"";
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -487,7 +522,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Daechelin-Guide-iOS-V2/Preview Content\"";
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
