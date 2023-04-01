@@ -17,6 +17,7 @@ struct SettingView: View {
         Navigation("설정" ,navigator) {
             
             ScrollView {
+                
                 VStack(spacing: 10) {
                     
                     Text("개인정보 관리")
@@ -72,7 +73,6 @@ struct SettingView: View {
                 .padding(.horizontal, 16)
                 
             }
-            .setBackground()
         }
     }
 }

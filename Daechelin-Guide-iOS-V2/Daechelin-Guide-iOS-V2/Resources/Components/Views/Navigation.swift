@@ -26,7 +26,7 @@ struct Navigation<Content: View>: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             ZStack(alignment: .leading) {
                 Button(action: {
                     navigator.back(isAnimated: true)
@@ -40,10 +40,13 @@ struct Navigation<Content: View>: View {
                     }
                     Spacer()
                 }
-                .padding(.leading, 15)
+                .padding(.leading, 16)
             }
-            .padding(.vertical, 5)
+            .padding(.vertical, 10)
+            Divider()
+            
             content
+                .setBackground()
         }
         
     }

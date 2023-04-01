@@ -16,6 +16,9 @@ struct AppRouterGroup {
             MainRouteBuilder(),
             MealRouteBuilder(),
             
+            //MARK: 서브
+            RankingRouteBuilder(),
+            ReviewlRouteBuilder(),
             
             //MARK: 설정
             SettingRouteBuilder(),

@@ -30,7 +30,7 @@ struct comment: Decodable {
 
 class mealModel: ObservableObject {
     
-    func getMealData(date: String, mealTime: String, mealCompletion: @escaping (meal?) -> Void, starCompletion: @escaping (star?) -> Void, commentCompletion: @escaping (comment?) -> Void) {
+    func getMealData(date: String, mealTime: String, mealCompletion: @escaping (meal?) -> Void, starCompletion: @escaping (star?) -> Void) {
         
         AF.request("\(API)/\(mealTime)",
                    method: .get,
@@ -72,40 +72,16 @@ class mealModel: ObservableObject {
                 .validate()
                 .responseData { response in
                     switch response.result {
-
+                        
                     case .success:
                         guard let value = response.value else { return }
                         guard let result = try? JSONDecoder().decode(star.self, from: value) else { return }
-
+                        
                         starCompletion(result)
-
+                        
                     case .failure:
                         print("별점 실패")
                         starCompletion(nil)
-                    }
-                }
-                
-                AF.request("\(API)/comment/message",
-                           method: .get,
-                           parameters: [
-                            "menu": menu
-                           ],
-                           encoding: URLEncoding.default,
-                           headers: ["Content-Type": "application/json"]
-                )
-                .validate()
-                .responseData { response in
-                    switch response.result {
-                        
-                    case .success:
-                        guard let value = response.value else { return }
-                        guard let result = try? JSONDecoder().decode(comment.self, from: value) else { return }
-                        
-                        commentCompletion(result)
-                        
-                    case .failure:
-                        print("댓글 실패")
-                        commentCompletion(nil)
                     }
                 }
                 

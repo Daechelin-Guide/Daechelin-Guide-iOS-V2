@@ -15,7 +15,7 @@ struct MealRouteBuilder: RouteBuilder {
             return WrappingController(matchPath: matchPath) {
                 MealView(week: items.getValue(key: "week")!, date: items.getValue(key: "date")!,
                          mealTime: items.getValue(key: "mealTime")!, navigator: navigator)
-                    .navigationBarHidden(false)
+                    .navigationBarHidden(true)
             }
         }
     }

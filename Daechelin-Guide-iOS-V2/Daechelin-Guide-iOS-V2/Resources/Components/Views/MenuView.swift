@@ -47,9 +47,9 @@ struct MenuView: View {
         .frame(height: 120)
         .frame(maxWidth:  .infinity)
         .background(.white)
-        .cornerRadius(18)
+        .cornerRadius(12)
         .overlay(
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(cornerRadius: 12)
                 .stroke(Color("\(mealTime)Color"), lineWidth: 1)
         )
         .autocapitalization(.none)

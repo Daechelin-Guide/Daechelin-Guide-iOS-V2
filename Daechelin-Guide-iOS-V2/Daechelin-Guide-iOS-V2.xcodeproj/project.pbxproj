@@ -39,6 +39,9 @@
 		52ED108C29D7E2BC009A4890 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108B29D7E2BC009A4890 /* RankingView.swift */; };
 		52ED108E29D7E2C6009A4890 /* RankingRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */; };
 		52ED109029D7E2CE009A4890 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED108F29D7E2CE009A4890 /* RankingModel.swift */; };
+		52ED109329D7EF3B009A4890 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109229D7EF3B009A4890 /* CommentView.swift */; };
+		52ED109629D7FE67009A4890 /* MyCosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109529D7FE67009A4890 /* MyCosmosView.swift */; };
+		52ED109829D8062B009A4890 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109729D8062B009A4890 /* CommentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		52ED108B29D7E2BC009A4890 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingRouteBuilder.swift; sourceTree = "<group>"; };
 		52ED108F29D7E2CE009A4890 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
+		52ED109229D7EF3B009A4890 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		52ED109529D7FE67009A4890 /* MyCosmosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCosmosView.swift; sourceTree = "<group>"; };
+		52ED109729D8062B009A4890 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,9 +145,10 @@
 		52ED104929D7E066009A4890 /* Meal */ = {
 			isa = PBXGroup;
 			children = (
+				52ED104C29D7E066009A4890 /* MealView.swift */,
 				52ED104A29D7E066009A4890 /* MealRouteBuilder.swift */,
 				52ED104B29D7E066009A4890 /* mealModel.swift */,
-				52ED104C29D7E066009A4890 /* MealView.swift */,
+				52ED109429D7EF3E009A4890 /* Comment */,
 			);
 			path = Meal;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 				52ED106129D7E066009A4890 /* MealTimeView.swift */,
 				52ED106329D7E066009A4890 /* MenuView.swift */,
 				52ED105F29D7E066009A4890 /* Navigation.swift */,
+				52ED109529D7FE67009A4890 /* MyCosmosView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +266,15 @@
 				52ED105029D7E066009A4890 /* WebViewRouteBuilder.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		52ED109429D7EF3E009A4890 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				52ED109229D7EF3B009A4890 /* CommentView.swift */,
+				52ED109729D8062B009A4890 /* CommentModel.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,8 +363,10 @@
 				52ED107E29D7E066009A4890 /* MealTimeView.swift in Sources */,
 				52ED108029D7E066009A4890 /* ViewExtenstion.swift in Sources */,
 				52ED107429D7E066009A4890 /* SettingView.swift in Sources */,
+				52ED109329D7EF3B009A4890 /* CommentView.swift in Sources */,
 				52ED108929D7E24E009A4890 /* ReviewRouteBuilder.swift in Sources */,
 				52ED107229D7E066009A4890 /* WebView.swift in Sources */,
+				52ED109829D8062B009A4890 /* CommentModel.swift in Sources */,
 				52ED107F29D7E066009A4890 /* MenuView.swift in Sources */,
 				52ED107B29D7E066009A4890 /* PublicFunction.swift in Sources */,
 				52ED107929D7E066009A4890 /* API.swift in Sources */,
@@ -366,6 +385,7 @@
 				52ED107329D7E066009A4890 /* WebViewRouteBuilder.swift in Sources */,
 				52ED108E29D7E2C6009A4890 /* RankingRouteBuilder.swift in Sources */,
 				52ED107029D7E066009A4890 /* MealView.swift in Sources */,
+				52ED109629D7FE67009A4890 /* MyCosmosView.swift in Sources */,
 				52ED108229D7E066009A4890 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

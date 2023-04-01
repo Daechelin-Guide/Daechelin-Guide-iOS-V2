@@ -7,76 +7,95 @@
 
 import SwiftUI
 import LinkNavigator
+import Cosmos
 
 struct MealView: View {
     
-    @State var week: String
+    @State var week: String = "날짜를 불러오는 중..."
     @State var date: String
     @State var mealTime: String
     
     @State var menu: String = "메뉴를 불러오는 중..."
-    @State var star: Int = 5
-    @State var str = ""
     
-    @ObservedObject var modal = mealModel()
+    @State var star: Double = 0
+    @State var updateOnTouch: Bool = false
+    
+    @State var mealTimeStr = "none"
+    
+    @ObservedObject var mealModal = mealModel()
+    @ObservedObject var commentModal = commentModel()
     
     let navigator: LinkNavigatorType
     
     var body: some View {
         
-        ScrollView {
+        Navigation("급식 상세 정보", navigator) {
             
-            VStack {
-                Text(week)
+            ScrollView {
                 
-                MealTimeView(str)
-                    .onAppear {
-                        switch mealTime {
-                        case "breakfast":
-                            str = "조식"
-                        case "lunch":
-                            str = "중식"
-                        case "dinner":
-                            str = "석식"
-                        default:
-                            str = ""
-                        }
-                    }
+                VStack(spacing: 10) {
+                    Text(String(week.dropFirst(6)))
+                        .setFont(18, .medium)
+                        .foregroundColor(Color("textColor"))
+                        .padding(.top, 20)
+                    
+                    MealTimeView(mealTimeStr)
+                    
+                    MyCosmosView(star: $star, updateOnTouch: $updateOnTouch)
+                    
+                    Divider()
+                        .frame(width: 220, height: 1)
+                        .background(Color("\(mealTimeStr)Color").opacity(0.5))
+                    
+                    Text(menu.replacingOccurrences(of: ",", with: "\n"))
+                        .setFont(16, .regular)
+                        .foregroundColor(Color("textColor"))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 20)
+                }
+                .frame(maxWidth: .infinity)
+                .background(.white)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
+                )
+                .autocapitalization(.none)
                 
-                Text(menu)
-                
-                Text("\(star)")
             }
-        }
-        .onAppear {
-            modal.getMealData(date: date, mealTime: mealTime, mealCompletion: {
-                result in
-                guard let result = result else { return }
-                
+            .padding([.horizontal, .top], 16)
+            .onAppear {
                 switch mealTime {
-                case "break":
-                    menu = result.breakfast!
-                case "lunch":
-                    menu = result.lunch!
-                default:
-                    menu = result.dinner!
+                case "lunch": mealTimeStr = "중식"
+                case "dinner": mealTimeStr = "석식"
+                default: mealTimeStr = "조식"
                 }
                 
-            }, starCompletion: {
-                result in
-                guard let result = result else { return }
-                print(result.star)
+                mealModal.getMealData(date: date, mealTime: mealTime, mealCompletion: {
+                    result in
+                    guard let result = result else { return }
+                    
+                    switch mealTime {
+                    case "lunch":
+                        menu = result.lunch!
+                    case "dinner":
+                        menu = result.dinner!
+                    default:
+                        menu = result.breakfast!
+                    }
+                    
+                }, starCompletion: {
+                    result in
+                    guard let result = result else { return }
+                    
+                    star = result.star!
+                    
+                })
                 
-            }, commentCompletion: {
-                result in
-                guard let result = result else { return }
-                print(result.message)
+            }
+            .refreshable {
                 
-            })
-            
-        }
-        .refreshable {
-            
+            }
         }
     }
 }

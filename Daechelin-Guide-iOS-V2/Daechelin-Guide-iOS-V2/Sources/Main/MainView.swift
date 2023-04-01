@@ -23,7 +23,32 @@ struct MainView: View {
     
     var body: some View {
         
-        NavigationView {
+        VStack(spacing: 0) {
+            
+            HStack {
+                Image("NavigationBarLogo")
+                    .resizable()
+                    .frame(width: 129, height: 20)
+                
+                Spacer()
+                
+                HStack(spacing: 10) {
+                    Button(action: {
+                        navigator.next(paths: ["Ranking"], items: [:], isAnimated: true)
+                    }) {
+                        Image("ranking")
+                    }
+                    
+                    Button(action: {
+                        navigator.next(paths: ["Setting"], items: [:], isAnimated: true)
+                    }) {
+                        Image("setting")
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            Divider()
             
             ScrollView {
                 
@@ -99,37 +124,18 @@ struct MainView: View {
                     .frame(height: 120)
                     .frame(maxWidth:  .infinity)
                     .background(.white)
-                    .cornerRadius(18)
+                    .cornerRadius(12)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18)
+                        RoundedRectangle(cornerRadius: 12)
                             .stroke(Color("급식데이Color"), lineWidth: 1)
                     )
                     .autocapitalization(.none)
-
+                    
                     
                     Spacer()
                 }
                 .padding(.top, 20)
                 .padding(.horizontal, 16)
-                .navigationBarItems(
-                    leading:
-                        Image("NavigationBarLogo")
-                        .resizable()
-                        .frame(width: 129, height: 20),
-                    
-                    trailing:
-                        HStack(spacing: 10) {
-                            Button(action: {
-                                
-                                
-                            }) { Image("ranking") }
-                            
-                            Button(action: {
-                                navigator.next(paths: ["Setting"], items: [:], isAnimated: true)
-                                
-                            }) { Image("setting") }
-                        }
-                )
                 
             }
             .setBackground()
@@ -158,4 +164,6 @@ struct MainView: View {
         }
         
     }
+    
 }
+
