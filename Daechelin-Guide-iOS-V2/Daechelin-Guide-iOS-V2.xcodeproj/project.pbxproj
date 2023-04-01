@@ -10,7 +10,6 @@
 		52ED102A29D72E5E009A4890 /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102929D72E5E009A4890 /* LinkNavigator */; };
 		52ED102D29D72E7B009A4890 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102C29D72E7B009A4890 /* Alamofire */; };
 		52ED103029D72FAD009A4890 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102F29D72FAD009A4890 /* Cosmos */; };
-		52ED106B29D7E066009A4890 /* LaunchScreenRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED104529D7E066009A4890 /* LaunchScreenRouteBuilder.swift */; };
 		52ED106D29D7E066009A4890 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED104829D7E066009A4890 /* LaunchScreenView.swift */; };
 		52ED106E29D7E066009A4890 /* MealRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED104A29D7E066009A4890 /* MealRouteBuilder.swift */; };
 		52ED106F29D7E066009A4890 /* mealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED104B29D7E066009A4890 /* mealModel.swift */; };
@@ -42,11 +41,12 @@
 		52ED109329D7EF3B009A4890 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109229D7EF3B009A4890 /* CommentView.swift */; };
 		52ED109629D7FE67009A4890 /* MyCosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109529D7FE67009A4890 /* MyCosmosView.swift */; };
 		52ED109829D8062B009A4890 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109729D8062B009A4890 /* CommentModel.swift */; };
+		52ED109C29D83B86009A4890 /* NavigationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109B29D83B86009A4890 /* NavigationExtensions.swift */; };
+		52ED109E29D847E9009A4890 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED109D29D847E9009A4890 /* ReviewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		52ED0FE729D72E29009A4890 /* Daechelin-Guide-iOS-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daechelin-Guide-iOS-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52ED104529D7E066009A4890 /* LaunchScreenRouteBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenRouteBuilder.swift; sourceTree = "<group>"; };
 		52ED104829D7E066009A4890 /* LaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52ED104A29D7E066009A4890 /* MealRouteBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealRouteBuilder.swift; sourceTree = "<group>"; };
 		52ED104B29D7E066009A4890 /* mealModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mealModel.swift; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		52ED109229D7EF3B009A4890 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		52ED109529D7FE67009A4890 /* MyCosmosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCosmosView.swift; sourceTree = "<group>"; };
 		52ED109729D8062B009A4890 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		52ED109B29D83B86009A4890 /* NavigationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtensions.swift; sourceTree = "<group>"; };
+		52ED109D29D847E9009A4890 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,6 @@
 		52ED104429D7E066009A4890 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				52ED104529D7E066009A4890 /* LaunchScreenRouteBuilder.swift */,
 				52ED104829D7E066009A4890 /* LaunchScreenView.swift */,
 			);
 			path = LaunchScreen;
@@ -225,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				52ED106529D7E066009A4890 /* ViewExtenstion.swift */,
+				52ED109B29D83B86009A4890 /* NavigationExtensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -245,6 +247,7 @@
 			children = (
 				52ED108629D7E241009A4890 /* ReviewView.swift */,
 				52ED108829D7E24E009A4890 /* ReviewRouteBuilder.swift */,
+				52ED109D29D847E9009A4890 /* ReviewModel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -364,19 +367,20 @@
 				52ED108029D7E066009A4890 /* ViewExtenstion.swift in Sources */,
 				52ED107429D7E066009A4890 /* SettingView.swift in Sources */,
 				52ED109329D7EF3B009A4890 /* CommentView.swift in Sources */,
+				52ED109E29D847E9009A4890 /* ReviewModel.swift in Sources */,
 				52ED108929D7E24E009A4890 /* ReviewRouteBuilder.swift in Sources */,
 				52ED107229D7E066009A4890 /* WebView.swift in Sources */,
 				52ED109829D8062B009A4890 /* CommentModel.swift in Sources */,
 				52ED107F29D7E066009A4890 /* MenuView.swift in Sources */,
 				52ED107B29D7E066009A4890 /* PublicFunction.swift in Sources */,
 				52ED107929D7E066009A4890 /* API.swift in Sources */,
-				52ED106B29D7E066009A4890 /* LaunchScreenRouteBuilder.swift in Sources */,
 				52ED107829D7E066009A4890 /* data.swift in Sources */,
 				52ED107C29D7E066009A4890 /* Navigation.swift in Sources */,
 				52ED108429D7E066009A4890 /* AppMain.swift in Sources */,
 				52ED106E29D7E066009A4890 /* MealRouteBuilder.swift in Sources */,
 				52ED107729D7E066009A4890 /* MainRouteBuilder.swift in Sources */,
 				52ED108729D7E241009A4890 /* ReviewView.swift in Sources */,
+				52ED109C29D83B86009A4890 /* NavigationExtensions.swift in Sources */,
 				52ED106D29D7E066009A4890 /* LaunchScreenView.swift in Sources */,
 				52ED108C29D7E2BC009A4890 /* RankingView.swift in Sources */,
 				52ED107529D7E066009A4890 /* MainModel.swift in Sources */,

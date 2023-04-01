@@ -22,8 +22,10 @@ struct MealView: View {
     
     @State var mealTimeStr: String = "none"
     
+    @State var isFirstPush = true
+    
     @State var test: String = "테스트"
-    @State var massege:[String] = []
+    @State var message:[String] = []
     
     @ObservedObject var mealModal = mealModel()
     @ObservedObject var commentModal = commentModel()
@@ -68,17 +70,17 @@ struct MealView: View {
                 ZStack {
                     ScrollView(showsIndicators: false) {
                         
-                        ForEach(massege, id: \.self) { data in
+                        ForEach(message, id: \.self) { data in
                             CommentCellView(data: data)
                         }
                         .padding(.top, 10)
-                        
                     }
                     
                     GeometryReader { geo in
                         
                         Button(action: {
-                            navigator.next(paths: ["Review"], items: [:], isAnimated: true)
+                            navigator.next(paths: ["Review"], items: ["menu": menu], isAnimated: true)
+                            isFirstPush = false
                         }) {
                             Image("조식")
                                 .resizable()
@@ -109,12 +111,27 @@ struct MealView: View {
                             menu = result.breakfast!
                         }
                         
-                        commentModal.getCommentData(menu: menu) { result in
-                            guard let result = result else { return }
-                            
-                            self.massege = result
+                        if isFirstPush {
+                            commentModal.getCommentData(menu: menu) { result in
+                                guard let result = result else { return }
+                                
+                                self.message = result
+                            }
+                        } else {
+                            commentModal.getCommentData(menu: menu) { result in
+                                guard let result = result else { return }
+                                
+                                
+                                //새로 올라온 리뷰가 있다면 반영하는 코드
+                                if let stringArray = result as? [String] {
+                                    let lastIndex = stringArray.count - 1
+                                    if lastIndex >= 0 {
+                                        self.message = [stringArray[lastIndex]]
+                                    }
+                                }
+                                
+                            }
                         }
-                        
                         
                     }, starCompletion: {
                         result in
@@ -123,7 +140,6 @@ struct MealView: View {
                         star = result.star!
                         
                     })
-                    
                 }
             }
             .padding([.horizontal, .top], 16)

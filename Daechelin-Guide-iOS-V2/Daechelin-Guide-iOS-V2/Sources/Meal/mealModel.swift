@@ -31,7 +31,7 @@ class mealModel: ObservableObject {
                    ],
                    encoding: URLEncoding.default,
                    headers: ["Content-Type": "application/json"]
-        )
+        ) { $0.timeoutInterval = 5 }
         .validate()
         .responseData { response in
             switch response.result {

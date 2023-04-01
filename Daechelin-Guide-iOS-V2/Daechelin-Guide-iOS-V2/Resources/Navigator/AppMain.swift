@@ -30,7 +30,7 @@ extension AppMain {
     var body: some Scene {
         WindowGroup {
             navigator
-                .launch(paths: ["LaunchScreen"], items: [:])
+                .launch(paths: ["Main"], items: [:])
             
                 .ignoresSafeArea()
                 .onOpenURL { url in

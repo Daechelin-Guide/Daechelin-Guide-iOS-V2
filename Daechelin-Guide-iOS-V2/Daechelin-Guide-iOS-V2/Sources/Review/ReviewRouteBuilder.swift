@@ -13,7 +13,7 @@ struct ReviewlRouteBuilder: RouteBuilder {
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                ReviewView(navigator: navigator)
+                ReviewView(menu: items.getValue(key: "menu")!, navigator: navigator)
                     .navigationBarHidden(true)
             }
         }

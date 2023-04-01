@@ -20,5 +20,8 @@ extension View {
         self
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("backgroundColor").ignoresSafeArea())
+            .onTapGesture {
+                tabBackgroundDownKeyborad()
+            }
     }
 }

@@ -20,16 +20,13 @@ class MainModel: ObservableObject {
         AF.request("\(API)/menu",
                    method: .get,
                    parameters: [
-                    //                    "year": components[0],
-                    //                    "month": components[1],
-                    //                    "day": components[2]
-                    "year": 2023,
-                    "month": 03,
-                    "day": 30
+                    "year": components[0],
+                    "month": components[1],
+                    "day": components[2]
                    ],
                    encoding: URLEncoding.default,
                    headers: ["Content-Type": "application/json"]
-        )
+        ) { $0.timeoutInterval = 5 }
         .validate()
         .responseData { response in
             switch response.result {

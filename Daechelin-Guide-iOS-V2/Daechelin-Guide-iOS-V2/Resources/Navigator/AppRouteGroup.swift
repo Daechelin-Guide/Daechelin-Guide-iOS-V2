@@ -9,9 +9,7 @@ import LinkNavigator
 
 struct AppRouterGroup {
     var routers: [RouteBuilder] {
-        [
-            LaunchScreenRouteBuilder(),
-            
+        [   
             //MARK: 메인
             MainRouteBuilder(),
             MealRouteBuilder(),

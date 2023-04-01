@@ -11,7 +11,6 @@ import Cosmos
 struct MyCosmosView: UIViewRepresentable {
     @Binding var star: Double
     @Binding var updateOnTouch: Bool
-    
 
     func makeUIView(context: Context) -> CosmosView {
         CosmosView()
@@ -23,6 +22,9 @@ struct MyCosmosView: UIViewRepresentable {
         cosmosView.settings.emptyImage = UIImage(named: "star-empty")
         cosmosView.settings.updateOnTouch = updateOnTouch
         
+        cosmosView.didFinishTouchingCosmos = { rating in
+            self.star = rating
+        }
         cosmosView.settings.starSize = 30
     
         cosmosView.setContentHuggingPriority(.defaultHigh, for: .vertical)

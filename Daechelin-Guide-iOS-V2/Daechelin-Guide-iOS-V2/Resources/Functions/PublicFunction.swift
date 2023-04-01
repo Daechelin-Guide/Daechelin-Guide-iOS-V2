@@ -15,3 +15,18 @@ public func getNowDate() -> String {
     let date = Date()
     return dateFormatter.string(from: date)
 }
+
+public func isButtonDisabled(_ cnt: Int, _ max: Int) -> Bool {
+    if ( cnt != 0 ) && ( cnt <= max ) {
+        return false
+    } else { return true }
+}
+
+public func tabBackgroundDownKeyborad() {
+    
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
+        keyWindow.endEditing(true)
+    }
+
+}
