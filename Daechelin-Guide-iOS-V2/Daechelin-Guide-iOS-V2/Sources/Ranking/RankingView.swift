@@ -17,10 +17,14 @@ struct RankingView: View {
         Navigation("대슐랭 랭킹", navigator) {
             
             ScrollView {
-                Text("다음 업데이트를 기대해주세요!")
-            }
-            .refreshable {
                 
+                VStack {
+                    Text("곧 업데이트 예정..!!")
+                        .padding(.top, 100)
+                    Text("피드백은 DM으로 보내주세요!")
+                        .padding(.top, 10)
+                    Text("인스타: slowheart._.beat")
+                }
             }
         }
     }

@@ -101,7 +101,15 @@ struct MainView: View {
                     }
                     
                     Button(action: {
-                        print("급식데이")
+                        
+                        let alertModel = Alert(
+                            title: "엇!",
+                            message: "지금은 급식데이 기간이 아닙니다.",
+                            buttons: [.init(title: "확인", style: .default, action: { print("확인") })],
+                            flagType: .default)
+                        
+                        navigator.alert(target: .default, model: alertModel)
+                        
                     }) {
                         HStack {
                             Image("mealday")

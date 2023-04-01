@@ -20,9 +20,9 @@ class MainModel: ObservableObject {
         AF.request("\(API)/menu",
                    method: .get,
                    parameters: [
-//                    "year": components[0],
-//                    "month": components[1],
-//                    "day": components[2]
+                    //                    "year": components[0],
+                    //                    "month": components[1],
+                    //                    "day": components[2]
                     "year": 2023,
                     "month": 03,
                     "day": 30
@@ -33,13 +33,13 @@ class MainModel: ObservableObject {
         .validate()
         .responseData { response in
             switch response.result {
-
+                
             case .success:
                 guard let value = response.value else { return }
                 guard let result = try? JSONDecoder().decode(menu.self, from: value) else { return }
                 
                 completion(result)
-
+                
             case .failure:
                 print("실패")
                 completion(nil)

@@ -36,43 +36,59 @@ struct MealView: View {
             
             VStack {
                 
-                ScrollView {
+                VStack(spacing: 10) {
+                    Text(String(week.dropFirst(6)))
+                        .setFont(18, .medium)
+                        .foregroundColor(Color("textColor"))
+                        .padding(.top, 20)
                     
-                    VStack(spacing: 10) {
-                        Text(String(week.dropFirst(6)))
-                            .setFont(18, .medium)
-                            .foregroundColor(Color("textColor"))
-                            .padding(.top, 20)
-                        
-                        MealTimeView(mealTimeStr)
-                        
-                        MyCosmosView(star: $star, updateOnTouch: $updateOnTouch)
-                        
-                        Divider()
-                            .frame(width: 220, height: 1)
-                            .background(Color("\(mealTimeStr)Color").opacity(0.5))
-                        
-                        Text(menu.replacingOccurrences(of: ",", with: "\n"))
-                            .setFont(16, .regular)
-                            .foregroundColor(Color("textColor"))
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom, 20)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.white)
-                    .cornerRadius(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 14)
-                            .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
-                    )
-                    .autocapitalization(.none)
+                    MealTimeView(mealTimeStr)
                     
-                    ForEach(massege, id: \.self) { data in
-                        CommentCellView(data: data)
-                    }
+                    MyCosmosView(star: $star, updateOnTouch: $updateOnTouch)
                     
+                    Divider()
+                        .frame(width: 220, height: 1)
+                        .background(Color("\(mealTimeStr)Color").opacity(0.5))
+                    
+                    Text(menu.replacingOccurrences(of: ",", with: "\n"))
+                        .setFont(16, .regular)
+                        .foregroundColor(Color("textColor"))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 20)
                 }
-                .padding([.horizontal, .top], 16)
+                .frame(maxWidth: .infinity)
+                .background(.white)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
+                )
+                .autocapitalization(.none)
+                
+                ZStack {
+                    ScrollView(showsIndicators: false) {
+                        
+                        ForEach(massege, id: \.self) { data in
+                            CommentCellView(data: data)
+                        }
+                        .padding(.top, 10)
+                        
+                    }
+                    
+                    GeometryReader { geo in
+                        
+                        Button(action: {
+                            navigator.next(paths: ["Review"], items: [:], isAnimated: true)
+                        }) {
+                            Image("조식")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                        .position(x: geo.size.width - 20,
+                                  y: geo.size.height - 44)
+                    }
+                }
+                
                 .onAppear {
                     
                     switch mealTime {
@@ -109,41 +125,8 @@ struct MealView: View {
                     })
                     
                 }
-                .refreshable {
-                    switch mealTime {
-                    case "lunch": mealTimeStr = "중식"
-                    case "dinner": mealTimeStr = "석식"
-                    default: mealTimeStr = "조식"
-                    }
-                    
-                    mealModal.getMealData(date: date, mealTime: mealTime, mealCompletion: { result in
-                        guard let result = result else { return }
-                        
-                        switch mealTime {
-                        case "lunch":
-                            menu = result.lunch!
-                        case "dinner":
-                            menu = result.dinner!
-                        default:
-                            menu = result.breakfast!
-                        }
-                        
-                        commentModal.getCommentData(menu: menu) { result in
-                            guard let result = result else { return }
-                            
-                            self.massege = result
-                        }
-                        
-                        
-                    }, starCompletion: {
-                        result in
-                        guard let result = result else { return }
-                        
-                        star = result.star!
-                        
-                    })
-                }
             }
+            .padding([.horizontal, .top], 16)
         }
     }
 }

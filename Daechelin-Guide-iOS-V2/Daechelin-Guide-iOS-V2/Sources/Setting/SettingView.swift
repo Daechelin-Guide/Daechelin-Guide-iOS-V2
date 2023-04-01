@@ -12,6 +12,8 @@ struct SettingView: View {
     
     let navigator: LinkNavigatorType
     
+    @State var isDeveloperInfoToggled = false
+    
     var body: some View {
         
         Navigation("설정" ,navigator) {
@@ -69,6 +71,72 @@ struct SettingView: View {
                     .cornerRadius(8)
                     .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
                     
+                    VStack {
+                        Button(action: {
+                            isDeveloperInfoToggled.toggle()
+                        }) {
+                            
+                            HStack {
+                                Text("개발자 정보")
+                                    .setFont(14, .regular)
+                                    .padding(.leading, 10)
+                                
+                                Spacer()
+                                
+                                if isDeveloperInfoToggled {
+                                    Image("arrow-down")
+                                        .padding(.trailing, 10)
+                                } else {
+                                    Image("setting-arrow")
+                                        .padding(.trailing, 10)
+                                }
+                                
+                            }
+                            .frame(height: 40)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
+                        }
+                        
+                        if isDeveloperInfoToggled {
+                            HStack {
+                                Text("개발팀 이름")
+                                    .setFont(14, .regular)
+                                    .padding(.leading, 10)
+                                
+                                Spacer()
+                                
+                                Text("대소고 A급 남자들")
+                                    .setFont(14, .regular)
+                                    .foregroundColor(Color("redTextColor"))
+                                    .padding(.trailing, 10)
+                                
+                            }
+                            .frame(height: 40)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
+                            
+                            HStack {
+                                Text("iOS 개발자 이름")
+                                    .setFont(14, .regular)
+                                    .padding(.leading, 10)
+                                
+                                Spacer()
+                                
+                                Text("이민규")
+                                    .setFont(14, .regular)
+                                    .foregroundColor(Color("redTextColor"))
+                                    .padding(.trailing, 10)
+                                
+                            }
+                            .frame(height: 40)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
+                            
+                        }
+                    }
                 }
                 .padding(.horizontal, 16)
                 
