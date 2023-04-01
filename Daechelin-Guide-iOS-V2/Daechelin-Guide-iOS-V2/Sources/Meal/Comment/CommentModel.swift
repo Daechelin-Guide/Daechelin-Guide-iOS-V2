@@ -18,9 +18,10 @@ struct Comment: Decodable {
 
 class commentModel: ObservableObject {
     
-    @Published var comment = [Comment]()
-    
-    func getCommentData(menu: String, commentCompletion: @escaping (comment?) -> Void) {
+    var comment: [Comment] = []
+    var massege:[String] = []
+
+    func getCommentData(menu: String, commentCompletion: @escaping ([String]?) -> Void) {
         
         AF.request("\(API)/comment/message",
                    method: .get,
@@ -33,11 +34,25 @@ class commentModel: ObservableObject {
         .validate()
         .responseData { response in
             switch response.result {
+                
             case .success:
-                print(response.data)
+                guard let value = response.value else { return }
+                guard let result = try? JSONDecoder().decode([Comment].self, from: value) else { return }
+                
+                self.comment = result
+                
+                for row in self.comment {
+                    if row.message != "" {
+                        self.massege.append(row.message!)
+                    }
+                }
+                commentCompletion(self.massege)
+                
+                print("댓글성공")
                 
             case .failure:
-                print(response.data)
+                commentCompletion(nil)
+                print("댓글실패")
             }
         }
     }

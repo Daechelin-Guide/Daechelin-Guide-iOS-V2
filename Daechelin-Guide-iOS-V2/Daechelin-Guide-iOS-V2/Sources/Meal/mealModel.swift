@@ -20,14 +20,6 @@ struct star: Decodable {
     var date: String?
 }
 
-struct comment: Decodable {
-    var commentId: Int?
-    var message: String?
-    var date: String?
-    var menu: String?
-    var createdDate: String?
-}
-
 class mealModel: ObservableObject {
     
     func getMealData(date: String, mealTime: String, mealCompletion: @escaping (meal?) -> Void, starCompletion: @escaping (star?) -> Void) {

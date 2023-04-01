@@ -10,7 +10,7 @@ import LinkNavigator
 
 struct MainView: View {
     
-    @State var week: String = "날짜를 불러오는 중..."
+    @State var week: String = ""
     @State var breakfast: String = "조식을 불러오는 중..."
     @State var lunch: String = "중식을 불러오는 중..."
     @State var dinner: String = "석식을 불러오는 중..."

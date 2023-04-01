@@ -9,10 +9,23 @@ import SwiftUI
 
 struct CommentCellView: View {
     
-    let index: Int
-    let data: Comment
+    let data: String
     
     var body: some View {
-        Text("index")
+        
+        HStack {
+            Image(systemName: "person")
+                .resizable()
+                .frame(width: 40, height: 40)
+            
+            VStack(spacing: 2) {
+                Text("익명의 대소고인")
+                    .setFont(12, .regular)
+                Text("\(data)")
+                    .setFont(12, .light)
+            }
+        }
+        .frame(height: 40)
+        .frame(maxWidth: .infinity)
     }
 }
