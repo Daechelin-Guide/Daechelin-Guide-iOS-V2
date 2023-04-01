@@ -36,6 +36,7 @@ struct MainView: View {
                         lunch = result.data.lunch!
                         dinner = result.data.dinner!
                         week = result.data.week!
+                        date = result.data.date
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
@@ -126,8 +127,8 @@ struct MainView: View {
                         Button(action: {
                             
                             let alertModel = Alert(
-                                title: "엇!",
-                                message: "지금은 급식데이 기간이 아닙니다.",
+                                title: "앗!",
+                                message: "지금은 급식데이 기간이 아닌 것 같아요 ㅠㅠ",
                                 buttons: [.init(title: "확인", style: .default, action: { print("확인") })],
                                 flagType: .default)
                             

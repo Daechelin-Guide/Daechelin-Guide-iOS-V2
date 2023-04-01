@@ -22,8 +22,6 @@ struct MealView: View {
     
     @State var mealTimeStr: String = "none"
     
-    @State var isFirstPush = true
-    
     @State var test: String = "테스트"
     @State var message:[String] = []
     
@@ -70,7 +68,7 @@ struct MealView: View {
                 ZStack {
                     ScrollView(showsIndicators: false) {
                         
-                        ForEach(message, id: \.self) { data in
+                        ForEach(Array(Set(message)), id: \.self) { data in
                             CommentCellView(data: data)
                         }
                         .padding(.top, 10)
@@ -80,7 +78,6 @@ struct MealView: View {
                         
                         Button(action: {
                             navigator.next(paths: ["Review"], items: ["menu": menu], isAnimated: true)
-                            isFirstPush = false
                         }) {
                             Image("조식")
                                 .resizable()
@@ -99,6 +96,7 @@ struct MealView: View {
                     default: mealTimeStr = "조식"
                     }
                     
+                    
                     mealModal.getMealData(date: date, mealTime: mealTime, mealCompletion: { result in
                         guard let result = result else { return }
                         
@@ -111,33 +109,17 @@ struct MealView: View {
                             menu = result.breakfast!
                         }
                         
-                        if isFirstPush {
-                            commentModal.getCommentData(menu: menu) { result in
-                                guard let result = result else { return }
-                                
-                                self.message = result
-                            }
-                        } else {
-                            commentModal.getCommentData(menu: menu) { result in
-                                guard let result = result else { return }
-                                
-                                
-                                //새로 올라온 리뷰가 있다면 반영하는 코드
-                                if let stringArray = result as? [String] {
-                                    let lastIndex = stringArray.count - 1
-                                    if lastIndex >= 0 {
-                                        self.message = [stringArray[lastIndex]]
-                                    }
-                                }
-                                
-                            }
-                        }
-                        
                     }, starCompletion: {
                         result in
                         guard let result = result else { return }
                         
                         star = result.star!
+                        
+                        commentModal.getCommentData(menu: menu) { result in
+                            guard let result = result else { return }
+                            
+                            self.message = result
+                        }
                         
                     })
                 }

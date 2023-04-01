@@ -77,8 +77,8 @@ class mealModel: ObservableObject {
                     }
                 }
                 
-            case .failure:
-                print("급식 실패")
+            case .failure(let error):
+                print("실패 : \n\(error)")
                 mealCompletion(nil)
             }
         }

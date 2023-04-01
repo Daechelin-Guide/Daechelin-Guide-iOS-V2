@@ -52,7 +52,8 @@ struct ReviewView: View {
                         Spacer()
                         
                         Button(action: {
-                            model.postReview(star: star, message: review, menu: menu)
+                                model.postReview(star: star, message: review, menu: menu, navigator: navigator)
+                                navigator.back(isAnimated: true)
                         }) {
                             Text("완료")
                                 .setFont(15, .bold)
