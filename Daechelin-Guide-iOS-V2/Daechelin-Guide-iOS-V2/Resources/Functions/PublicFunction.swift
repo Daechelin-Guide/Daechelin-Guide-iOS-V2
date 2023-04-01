@@ -30,3 +30,29 @@ public func tabBackgroundDownKeyborad() {
     }
 
 }
+
+public func minus24Hours(from dateString: String) -> String? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    
+    if let date = formatter.date(from: dateString) {
+        
+        let subtractedDate = date.addingTimeInterval(-86400)
+        return formatter.string(from: subtractedDate)
+    }
+    
+    return nil
+}
+
+public func add24Hours(from dateString: String) -> String? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    
+    if let date = formatter.date(from: dateString) {
+        
+        let subtractedDate = date.addingTimeInterval(+86400)
+        return formatter.string(from: subtractedDate)
+    }
+    
+    return nil
+}

@@ -24,7 +24,7 @@ struct MealView: View {
     
     @State var test: String = "테스트"
     @State var message:[String] = []
-    
+        
     @ObservedObject var mealModal = mealModel()
     @ObservedObject var commentModal = commentModel()
     
@@ -68,7 +68,7 @@ struct MealView: View {
                 ZStack {
                     ScrollView(showsIndicators: false) {
                         
-                        ForEach(Array(Set(message)), id: \.self) { data in
+                        ForEach(Array(Set(message)).sorted().reversed(), id: \.self) { data in
                             CommentCellView(data: data)
                         }
                         .padding(.top, 10)

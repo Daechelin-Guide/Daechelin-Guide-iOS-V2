@@ -10,14 +10,18 @@ import LinkNavigator
 
 struct MainView: View {
     
-    @State private var isLoading: Bool = true
+    @State var isLoading: Bool = true
+    
+    @State var isDatePickerVisible: Bool = true
+    
+    @State var selectedDate = Date()
     
     @State var week: String = ""
-    @State var breakfast: String = "조식을 불러오는 중..."
-    @State var lunch: String = "중식을 불러오는 중..."
-    @State var dinner: String = "석식을 불러오는 중..."
+    @State var breakfast: String = "조식이 없는 날입니다 :)"
+    @State var lunch: String = "중식이 없는 날입니다 :)"
+    @State var dinner: String = "석식이 없는 날입니다 :)"
     
-    @State var date: String = ""
+    @State var date: String = getNowDate()
     @State var mealTime: String = ""
     
     @ObservedObject var modal = MainModel()
@@ -27,14 +31,15 @@ struct MainView: View {
     var body: some View {
         
         if isLoading {
+            
             LaunchScreenView()
                 .onAppear {
-                    modal.getMenuData { result in
+                    modal.getMenuData(date) { result in
                         guard let result = result else { return }
                         
-                        breakfast = result.data.breakfast!
-                        lunch = result.data.lunch!
-                        dinner = result.data.dinner!
+                        breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+                        lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+                        dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
                         week = result.data.week!
                         date = result.data.date
                     }
@@ -79,56 +84,96 @@ struct MainView: View {
                     VStack(spacing: 20) {
                         
                         HStack(spacing: 10) {
-                            Button(action: {  }) {
+                            Button(action: {
+                                date = minus24Hours(from: date)!
+                                print(date)
+                                
+                                modal.getMenuData(date) { result in
+                                    guard let result = result else { return }
+                                    
+                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
+                                    week = result.data.week!
+                                }
+                            }) {
                                 Image("arrow-left")
                             }
                             
-                            Text("\(week)")
-                                .setFont(14, .medium)
-                                .frame(width: 160 ,height: 30)
-                                .background(.white)
-                                .cornerRadius(15)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                                )
-                                .autocapitalization(.none)
+                            Button(action: {
+                                
+                            }) {
+                                Text("\(week)")
+                                    .setFont(14, .medium)
+                                    .foregroundColor(Color("textColor"))
+                                    .frame(width: 166 ,height: 30)
+                                    .background(.white)
+                                    .cornerRadius(15)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.gray.opacity(0.4), lineWidth: 1)
+                                    }
+                            }
                             
-                            Button(action: {  }) {
+                            Button(action: {
+                                date = add24Hours(from: date)!
+                                print(date)
+                                
+                                modal.getMenuData(date) { result in
+                                    guard let result = result else { return }
+                                    
+                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
+                                    week = result.data.week!
+                                }
+                            }) {
                                 Image("arrow-right")
                                 
                             }
                         }
                         
                         MenuView("조식", breakfast) {
-                            navigator.next(paths: ["Meal"], items: [
-                                "week": week,
-                                "date": date,
-                                "mealTime": "break"
-                            ], isAnimated: true)
+                            if ( breakfast == "조식이 없는 날입니다 :)" ) {
+                                
+                            } else {
+                                navigator.next(paths: ["Meal"], items: [
+                                    "week": week,
+                                    "date": date,
+                                    "mealTime": "break"
+                                ], isAnimated: true)
+                            }
                         }
                         
                         MenuView("중식", lunch) {
-                            navigator.next(paths: ["Meal"], items: [
-                                "week": week,
-                                "date": date,
-                                "mealTime": "lunch"
-                            ], isAnimated: true)
+                            if ( lunch == "중식이 없는 날입니다 :)" ) {
+                                
+                            } else {
+                                navigator.next(paths: ["Meal"], items: [
+                                    "week": week,
+                                    "date": date,
+                                    "mealTime": "lunch"
+                                ], isAnimated: true)
+                            }
                         }
                         
                         MenuView("석식", dinner) {
-                            navigator.next(paths: ["Meal"], items: [
-                                "week": week,
-                                "date": date,
-                                "mealTime": "dinner"
-                            ], isAnimated: true)
+                            if ( dinner == "석식이 없는 날입니다 :)" ) {
+                                
+                            } else {
+                                navigator.next(paths: ["Meal"], items: [
+                                    "week": week,
+                                    "date": date,
+                                    "mealTime": "dinner"
+                                ], isAnimated: true)
+                            }
                         }
                         
                         Button(action: {
                             
                             let alertModel = Alert(
                                 title: "앗!",
-                                message: "지금은 급식데이 기간이 아닌 것 같아요 ㅠㅠ",
+                                message: "지금은 급식데이 기간이 아닌 것 같네요",
                                 buttons: [.init(title: "확인", style: .default, action: { print("확인") })],
                                 flagType: .default)
                             
@@ -172,12 +217,12 @@ struct MainView: View {
                 }
                 .setBackground()
                 .refreshable {
-                    modal.getMenuData { result in
+                    modal.getMenuData(getNowDate()) { result in
                         guard let result = result else { return }
                         
-                        breakfast = result.data.breakfast!
-                        lunch = result.data.lunch!
-                        dinner = result.data.dinner!
+                        breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+                        lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+                        dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
                         week = result.data.week!
                     }
                 }

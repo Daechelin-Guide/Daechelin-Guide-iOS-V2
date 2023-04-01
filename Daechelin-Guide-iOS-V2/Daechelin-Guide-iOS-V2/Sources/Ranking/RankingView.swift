@@ -10,6 +10,8 @@ import LinkNavigator
 
 struct RankingView: View {
     
+    @ObservedObject var model = rankingModel()
+    
     let navigator: LinkNavigatorType
     
     var body: some View {
@@ -24,6 +26,14 @@ struct RankingView: View {
                     Text("피드백은 DM으로 보내주세요!")
                         .padding(.top, 10)
                     Text("인스타: slowheart._.beat")
+                    
+                }
+            }
+            .onAppear {
+                model.getRankingData() { result in
+                    guard let result = result else { return }
+                    
+                    print(result)
                 }
             }
         }
