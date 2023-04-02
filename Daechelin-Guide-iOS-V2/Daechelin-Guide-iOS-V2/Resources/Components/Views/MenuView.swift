@@ -28,6 +28,8 @@ struct MenuView: View {
             HStack {
                 VStack(spacing: 0) {
                     Image("\(mealTime)")
+                        .resizable()
+                        .frame(width: 67, height: 67)
                     
                     MealTimeView("\(mealTime)")
                 }

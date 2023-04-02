@@ -20,7 +20,7 @@ struct MealView: View {
     @State var star: Double = 0
     @State var updateOnTouch: Bool = false
     
-    @State var mealTimeStr: String = "none"
+    @State var mealTimeStr: String = "조식"
     
     @State var test: String = "테스트"
     @State var message:[String] = []
@@ -79,11 +79,18 @@ struct MealView: View {
                         Button(action: {
                             navigator.next(paths: ["Review"], items: ["menu": menu], isAnimated: true)
                         }) {
-                            Image("조식")
+                            Image("\(mealTimeStr)")
                                 .resizable()
-                                .frame(width: 60, height: 60)
+                                .frame(width: 67, height: 67)
+                                .background(.white)
+                                .cornerRadius(34)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 34)
+                                        .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
+                                )
+                                .autocapitalization(.none)
                         }
-                        .position(x: geo.size.width - 20,
+                        .position(x: geo.size.width - 32,
                                   y: geo.size.height - 44)
                     }
                 }

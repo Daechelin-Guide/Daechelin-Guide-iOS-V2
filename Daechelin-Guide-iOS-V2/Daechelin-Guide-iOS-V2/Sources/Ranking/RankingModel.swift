@@ -8,29 +8,29 @@
 import SwiftUI
 import Alamofire
 
-struct rank: Decodable {
-    var star: Double?
+struct rank: Decodable, Hashable {
+    var star: Int?
     var menu: String?
     var date: String?
-    var review: Double?
+    var review: Int?
 }
 
 class rankingModel: ObservableObject {
     
-    func getRankingData(rankingCompletion: @escaping (rank?) -> Void) {
+    func getRankingData(rankingCompletion: @escaping ([rank]?) -> Void) {
         
         AF.request("\(API)/rank",
                    method: .get,
                    encoding: URLEncoding.default,
                    headers: ["Content-Type": "application/json"]
-        ) { $0.timeoutInterval = 5 }
+        )
         .validate()
         .responseData { response in
             switch response.result {
                 
             case .success:
                 guard let value = response.value else { return }
-                guard let result = try? JSONDecoder().decode(rank.self, from: value) else { return }
+                guard let result = try? JSONDecoder().decode([rank].self, from: value) else { return }
                 
                 print("성공")
                 

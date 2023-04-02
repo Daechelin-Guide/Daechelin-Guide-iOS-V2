@@ -12,8 +12,6 @@ struct MainView: View {
     
     @State var isLoading: Bool = true
     
-    @State var isDatePickerVisible: Bool = true
-    
     @State var selectedDate = Date()
     
     @State var week: String = ""
@@ -102,6 +100,15 @@ struct MainView: View {
                             
                             Button(action: {
                                 
+                                modal.getMenuData(getNowDate()) { result in
+                                    guard let result = result else { return }
+                                    
+                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
+                                    week = result.data.week!
+                                }
+                                
                             }) {
                                 Text("\(week)")
                                     .setFont(14, .medium)
@@ -181,7 +188,7 @@ struct MainView: View {
                             
                         }) {
                             HStack {
-                                Image("mealday")
+                                Image("급식데이")
                                     .padding(.bottom, 6)
                                 
                                 VStack(alignment: .leading) {

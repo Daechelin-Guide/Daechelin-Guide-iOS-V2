@@ -12,31 +12,34 @@ struct RankingView: View {
     
     @ObservedObject var model = rankingModel()
     
+    @State var rank: [rank] = []
+    
     let navigator: LinkNavigatorType
     
     var body: some View {
         
         Navigation("대슐랭 랭킹", navigator) {
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 
-                VStack {
-                    Text("곧 업데이트 예정..!!")
-                        .padding(.top, 100)
-                    Text("피드백은 DM으로 보내주세요!")
-                        .padding(.top, 10)
-                    Text("인스타: slowheart._.beat")
-                    
-                }
+                Text("곧 업데이트 예정입니다!")
+                    .setFont(18, .medium)
+                    .padding(.top, 40)
+                Text("아! 그리고 이스터애그가 있으니 찾아보세요 :)")
             }
-            .onAppear {
-                model.getRankingData() { result in
-                    guard let result = result else { return }
-                    
-                    print(result)
+        }
+        .onAppear {
+            model.getRankingData { ranking in
+                if let ranking = ranking {
+                    // 성공적으로 데이터를 받아온 경우
+                    rank = ranking
+                } else {
+                    // 데이터를 받아오는데 실패한 경우
+                    print("데이터를 받아오는데 실패했습니다.")
                 }
             }
         }
     }
+    
 }
 
