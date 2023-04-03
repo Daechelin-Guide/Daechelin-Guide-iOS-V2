@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5258052929D89CB900725943 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5258052829D89CB900725943 /* CustomDatePicker.swift */; };
 		5258064D29D929DC00725943 /* RankingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5258064C29D929DC00725943 /* RankingCellView.swift */; };
+		52A48A3A29DA4E6000F0E509 /* settingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48A3929DA4E6000F0E509 /* settingButtonView.swift */; };
 		52ED102A29D72E5E009A4890 /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102929D72E5E009A4890 /* LinkNavigator */; };
 		52ED102D29D72E7B009A4890 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102C29D72E7B009A4890 /* Alamofire */; };
 		52ED103029D72FAD009A4890 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 52ED102F29D72FAD009A4890 /* Cosmos */; };
@@ -27,7 +27,7 @@
 		52ED107929D7E066009A4890 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED105929D7E066009A4890 /* API.swift */; };
 		52ED107A29D7E066009A4890 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52ED105A29D7E066009A4890 /* Assets.xcassets */; };
 		52ED107B29D7E066009A4890 /* PublicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED105D29D7E066009A4890 /* PublicFunction.swift */; };
-		52ED107C29D7E066009A4890 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED105F29D7E066009A4890 /* Navigation.swift */; };
+		52ED107C29D7E066009A4890 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED105F29D7E066009A4890 /* NavigationView.swift */; };
 		52ED107E29D7E066009A4890 /* MealTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106129D7E066009A4890 /* MealTimeView.swift */; };
 		52ED107F29D7E066009A4890 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106329D7E066009A4890 /* MenuView.swift */; };
 		52ED108029D7E066009A4890 /* ViewExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED106529D7E066009A4890 /* ViewExtenstion.swift */; };
@@ -49,8 +49,8 @@
 
 /* Begin PBXFileReference section */
 		5258052729D889A900725943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5258052829D89CB900725943 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		5258064C29D929DC00725943 /* RankingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCellView.swift; sourceTree = "<group>"; };
+		52A48A3929DA4E6000F0E509 /* settingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingButtonView.swift; sourceTree = "<group>"; };
 		52ED0FE729D72E29009A4890 /* Daechelin-Guide-iOS-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daechelin-Guide-iOS-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ED104829D7E066009A4890 /* LaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52ED104A29D7E066009A4890 /* MealRouteBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealRouteBuilder.swift; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		52ED105929D7E066009A4890 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		52ED105A29D7E066009A4890 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52ED105D29D7E066009A4890 /* PublicFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicFunction.swift; sourceTree = "<group>"; };
-		52ED105F29D7E066009A4890 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		52ED105F29D7E066009A4890 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		52ED106129D7E066009A4890 /* MealTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTimeView.swift; sourceTree = "<group>"; };
 		52ED106329D7E066009A4890 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		52ED106529D7E066009A4890 /* ViewExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtenstion.swift; sourceTree = "<group>"; };
@@ -101,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52A48A3B29DA4F8C00F0E509 /* UIViewRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				52ED109529D7FE67009A4890 /* MyCosmosView.swift */,
+			);
+			path = UIViewRepresentable;
+			sourceTree = "<group>";
+		};
 		52ED0FDE29D72E29009A4890 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +212,7 @@
 		52ED105B29D7E066009A4890 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				52A48A3B29DA4F8C00F0E509 /* UIViewRepresentable */,
 				52ED105E29D7E066009A4890 /* Views */,
 			);
 			path = Components;
@@ -222,9 +231,8 @@
 			children = (
 				52ED106129D7E066009A4890 /* MealTimeView.swift */,
 				52ED106329D7E066009A4890 /* MenuView.swift */,
-				52ED105F29D7E066009A4890 /* Navigation.swift */,
-				52ED109529D7FE67009A4890 /* MyCosmosView.swift */,
-				5258052829D89CB900725943 /* CustomDatePicker.swift */,
+				52ED105F29D7E066009A4890 /* NavigationView.swift */,
+				52A48A3929DA4E6000F0E509 /* settingButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,7 +378,6 @@
 			files = (
 				52ED109029D7E2CE009A4890 /* RankingModel.swift in Sources */,
 				52ED108129D7E066009A4890 /* AppDependency.swift in Sources */,
-				5258052929D89CB900725943 /* CustomDatePicker.swift in Sources */,
 				52ED107629D7E066009A4890 /* MainView.swift in Sources */,
 				52ED108329D7E066009A4890 /* AppRouteGroup.swift in Sources */,
 				52ED107E29D7E066009A4890 /* MealTimeView.swift in Sources */,
@@ -385,7 +392,7 @@
 				52ED107B29D7E066009A4890 /* PublicFunction.swift in Sources */,
 				52ED107929D7E066009A4890 /* API.swift in Sources */,
 				52ED107829D7E066009A4890 /* data.swift in Sources */,
-				52ED107C29D7E066009A4890 /* Navigation.swift in Sources */,
+				52ED107C29D7E066009A4890 /* NavigationView.swift in Sources */,
 				52ED108429D7E066009A4890 /* AppMain.swift in Sources */,
 				52ED106E29D7E066009A4890 /* MealRouteBuilder.swift in Sources */,
 				52ED107729D7E066009A4890 /* MainRouteBuilder.swift in Sources */,
@@ -399,6 +406,7 @@
 				52ED106F29D7E066009A4890 /* mealModel.swift in Sources */,
 				52ED107329D7E066009A4890 /* WebViewRouteBuilder.swift in Sources */,
 				52ED108E29D7E2C6009A4890 /* RankingRouteBuilder.swift in Sources */,
+				52A48A3A29DA4E6000F0E509 /* settingButtonView.swift in Sources */,
 				52ED107029D7E066009A4890 /* MealView.swift in Sources */,
 				52ED109629D7FE67009A4890 /* MyCosmosView.swift in Sources */,
 				52ED108229D7E066009A4890 /* AppDelegate.swift in Sources */,
@@ -529,7 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -546,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dgsw.mingyu.Guide-Daechelin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -565,7 +573,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -582,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dgsw.mingyu.Guide-Daechelin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -1,29 +1,31 @@
 //
-//  SettingButtonView.swift
+//  settingButton.swift
 //  Daechelin-Guide-iOS-V2
 //
-//  Created by 이민규 on 2023/04/01.
+//  Created by 이민규 on 2023/04/03.
 //
 
 import SwiftUI
 
-struct SettingButtonView: View {
+struct settingButtonView: View {
     
-    let contents: String
-    let disabled: Bool
-    let item: Text
+    let title: String
+    let content: String
+    let textColor: String
+    let disable: Bool
     let action: () -> Void
     
-    init (_ contents: String,
-          disabled: Bool,
-          _ item: some View,
-          _ action: @escaping () -> Void
-    )
+    init(_ title: String,
+         _ content: String,
+         _ textColor: String,
+         _ disable: Bool,
+         _ action: @escaping () -> Void)
     {
-        self.contents = contents
-        self.disabled = disabled
+        self.title = title
+        self.content = content
+        self.textColor = textColor
+        self.disable = disable
         self.action = action
-        self.item = item
     }
     
     var body: some View {
@@ -31,15 +33,23 @@ struct SettingButtonView: View {
         Button(action: action) {
             
             HStack {
-                Text(contents)
+                Text(title)
                     .setFont(14, .regular)
+                    .foregroundColor(Color("textColor"))
+                    .padding(.leading, 10)
                 
                 Spacer()
                 
-                item
-                
+                Text(content)
+                    .setFont(14, .regular)
+                    .foregroundColor(Color(textColor))
+                    .padding(.trailing, 10)
             }
+            .frame(height: 40)
+            .background(Color("backgroundColor"))
+            .cornerRadius(8)
+            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
         }
-        .disabled(disabled)
+        .disabled(disable)
     }
 }

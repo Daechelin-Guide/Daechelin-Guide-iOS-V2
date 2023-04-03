@@ -32,15 +32,7 @@ struct MainView: View {
             
             LaunchScreenView()
                 .onAppear {
-                    modal.getMenuData(date) { result in
-                        guard let result = result else { return }
-                        
-                        breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-                        lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-                        dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-                        week = result.data.week!
-                        date = result.data.date
-                    }
+                    getMenu(date)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                         withAnimation(.easeInOut(duration: 0.7)) {
@@ -84,30 +76,15 @@ struct MainView: View {
                         HStack(spacing: 10) {
                             Button(action: {
                                 date = minus24Hours(from: date)!
-                                print(date)
                                 
-                                modal.getMenuData(date) { result in
-                                    guard let result = result else { return }
-                                    
-                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-                                    week = result.data.week!
-                                }
+                                getMenu(date)
                             }) {
                                 Image("arrow-left")
                             }
                             
                             Button(action: {
                                 
-                                modal.getMenuData(getNowDate()) { result in
-                                    guard let result = result else { return }
-                                    
-                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-                                    week = result.data.week!
-                                }
+                                getMenu(getNowDate())
                                 
                             }) {
                                 Text("\(week)")
@@ -124,16 +101,8 @@ struct MainView: View {
                             
                             Button(action: {
                                 date = add24Hours(from: date)!
-                                print(date)
                                 
-                                modal.getMenuData(date) { result in
-                                    guard let result = result else { return }
-                                    
-                                    breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-                                    lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-                                    dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-                                    week = result.data.week!
-                                }
+                                getMenu(date)
                             }) {
                                 Image("arrow-right")
                                 
@@ -141,9 +110,7 @@ struct MainView: View {
                         }
                         
                         MenuView("조식", breakfast) {
-                            if ( breakfast == "조식이 없는 날입니다 :)" ) {
-                                
-                            } else {
+                            if breakfast != "조식이 없는 날입니다 :)" {
                                 navigator.next(paths: ["Meal"], items: [
                                     "week": week,
                                     "date": date,
@@ -153,9 +120,7 @@ struct MainView: View {
                         }
                         
                         MenuView("중식", lunch) {
-                            if ( lunch == "중식이 없는 날입니다 :)" ) {
-                                
-                            } else {
+                            if lunch != "중식이 없는 날입니다 :)" {
                                 navigator.next(paths: ["Meal"], items: [
                                     "week": week,
                                     "date": date,
@@ -166,8 +131,6 @@ struct MainView: View {
                         
                         MenuView("석식", dinner) {
                             if ( dinner == "석식이 없는 날입니다 :)" ) {
-                                
-                            } else {
                                 navigator.next(paths: ["Meal"], items: [
                                     "week": week,
                                     "date": date,
@@ -192,7 +155,7 @@ struct MainView: View {
                                     .padding(.bottom, 6)
                                 
                                 VStack(alignment: .leading) {
-                                    Text("대소고 맛잘알을 찾습니다!")
+                                    Text("대소고 맛.잘.알을 찾습니다!")
                                         .setFont(18, .medium)
                                         .foregroundColor(.black)
                                     
@@ -224,18 +187,42 @@ struct MainView: View {
                 }
                 .setBackground()
                 .refreshable {
-                    modal.getMenuData(getNowDate()) { result in
-                        guard let result = result else { return }
-                        
-                        breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-                        lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-                        dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-                        week = result.data.week!
-                    }
+                    getMenu(date)
                 }
+                .gesture(
+                    DragGesture()
+                        .onEnded({ value in
+                            if value.translation.width > 0 {
+                                withAnimation(.spring()) {
+                                    date = minus24Hours(from: date)!
+                                    
+                                    getMenu(date)
+                                }
+                            } else if value.translation.width < 0 {
+                                withAnimation(.spring()) {
+                                    date = add24Hours(from: date)!
+                                    
+                                    getMenu(date)
+                                }
+                            }
+                        })
+                )
             }
         }
         
+    }
+    
+    func getMenu(_ date: String) {
+        
+        modal.getMenuData(date) { result in
+            guard let result = result else { return }
+            
+            breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
+            lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
+            dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
+            week = result.data.week!
+            self.date = result.data.date
+        }
     }
     
 }
