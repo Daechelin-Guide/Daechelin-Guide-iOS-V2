@@ -10,23 +10,28 @@ import LinkNavigator
 import Cosmos
 
 struct MealView: View {
-    
-    @State var week: String = ""
-    @State var date: String
+
+    //조식.중식.석식 구분
     @State var mealTime: String
     
-    @State var menu: String = "메뉴를 불러오는 중..."
+    //급식 메뉴
+    @State var menu: String
+    
+    //localDate
+    @State var localDate: String
+    
+    //날짜
+    @State var week: String
     
     @State var star: Double = 0
+    
     @State var updateOnTouch: Bool = false
     
     @State var mealTimeStr: String = "조식"
     
-    @State var test: String = "테스트"
     @State var message:[String] = []
-        
+    
     @ObservedObject var mealModal = mealModel()
-    @ObservedObject var commentModal = commentModel()
     
     let navigator: LinkNavigatorType
     
@@ -38,6 +43,7 @@ struct MealView: View {
                 
                 VStack(spacing: 10) {
                     Text(String(week.dropFirst(6)))
+                    
                         .setFont(18, .medium)
                         .foregroundColor(Color("textColor"))
                         .padding(.top, 20)
@@ -77,7 +83,7 @@ struct MealView: View {
                     GeometryReader { geo in
                         
                         Button(action: {
-                            navigator.next(paths: ["Review"], items: ["menu": menu], isAnimated: true)
+                            navigator.next(paths: ["Review"], items: ["localDate": localDate], isAnimated: true)
                         }) {
                             Image("\(mealTimeStr)")
                                 .resizable()
@@ -103,32 +109,12 @@ struct MealView: View {
                     default: mealTimeStr = "조식"
                     }
                     
-                    
-                    mealModal.getMealData(date: date, mealTime: mealTime, mealCompletion: { result in
+                    mealModal.getMealData(localDate: localDate, mealTime: mealTime) { result in
+                        
                         guard let result = result else { return }
+                        print(result)
                         
-                        switch mealTime {
-                        case "lunch":
-                            menu = result.lunch!
-                        case "dinner":
-                            menu = result.dinner!
-                        default:
-                            menu = result.breakfast!
-                        }
-                        
-                    }, starCompletion: {
-                        result in
-                        guard let result = result else { return }
-                        
-                        star = result.star!
-                        
-                        commentModal.getCommentData(menu: menu) { result in
-                            guard let result = result else { return }
-                            
-                            self.message = result
-                        }
-                        
-                    })
+                    }
                 }
             }
             .padding([.horizontal, .top], 16)

@@ -12,7 +12,7 @@ struct RankingView: View {
     
     @ObservedObject var model = rankingModel()
     
-    @State var rank: [rank] = []
+    @State var rank: [Rank] = []
     
     let navigator: LinkNavigatorType
     
@@ -20,23 +20,29 @@ struct RankingView: View {
         
         Navigation("대슐랭 랭킹", navigator) {
             
-            ScrollView(showsIndicators: false) {
-                
-                Text("곧 업데이트 예정입니다!")
-                    .setFont(18, .medium)
-                    .padding(.top, 40)
-                Text("아! 그리고 이스터애그가 있으니 찾아보세요 :)")
-            }
+            Text("곧 출시됩니다!")
+            
+//            ScrollView(showsIndicators: false) {
+//
+//                ForEach(rank, id: \.self) { rank in
+//                    RankingCellView(data: rank)
+//                }
+//            }
         }
         .onAppear {
-            model.getRankingData { ranking in
-                if let ranking = ranking {
-                    // 성공적으로 데이터를 받아온 경우
-                    rank = ranking
-                } else {
-                    // 데이터를 받아오는데 실패한 경우
-                    print("데이터를 받아오는데 실패했습니다.")
-                }
+            getRank()
+            
+        }
+        .refreshable {
+            getRank()
+        }
+    }
+    
+    func getRank() {
+        model.getRankingData { ranking in
+            if let ranking = ranking {
+                rank = ranking
+                print(rank)
             }
         }
     }

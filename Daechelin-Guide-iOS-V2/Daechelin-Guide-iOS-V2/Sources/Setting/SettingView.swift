@@ -7,6 +7,7 @@
 
 import SwiftUI
 import LinkNavigator
+import Alamofire
 
 struct SettingView: View {
     
@@ -14,9 +15,6 @@ struct SettingView: View {
     
     @State var isDeveloperInfoToggled = false
     @State var isVersionInfoToggled = false
-    
-    @State private var buttonTapCount = 0
-    @State private var isDeveloperEastereggView = false
     
     var body: some View {
         
@@ -88,9 +86,9 @@ struct SettingView: View {
                     
                     if isVersionInfoToggled {
                         
-                        settingButtonView("현재 버전", "2.1.1", "redTextColor", true) {}
+                        settingButtonView("현재 버전", "2.1.0", "redTextColor", true) { }
                         
-                        settingButtonView("변경 내용", "버그 수정 및 캘린더 추가", "textColor", true) {}
+                        settingButtonView("변경 내용", "5배 빨라진 로딩 속도!", "textColor", true) { }
                     }
                     
                     VStack {
@@ -123,39 +121,11 @@ struct SettingView: View {
                         
                         if isDeveloperInfoToggled {
                             
-                            settingButtonView("개발팀 이름", "대소고 A급 남자들", "redTextColor", true) {}
+                            settingButtonView("개발팀 이름", "대소고 A급 남자들", "redTextColor", true) { }
                             
-                            settingButtonView("iOS 개발자 이름", "이민규", "textColor", false) {
-                                self.buttonTapCount += 1
-                                isDeveloperEastereggView = false
-                                
-                                if self.buttonTapCount >= 12 {
-                                    self.buttonTapCount = 0
-                                    
-                                    isDeveloperEastereggView = true
-                                }
-                            }
-                            .buttonStyle(PlainButtonStyle())
+                            settingButtonView("개발자 이름", "이민규", "textColor", true) { }
                             
-                            if isDeveloperEastereggView == true {
-                                VStack {
-                                    Image("이스터애그")
-                                        .resizable()
-                                        .frame(width: 315, height: 420)
-                                        .cornerRadius(8)
-                                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4 )
-                                    
-                                    Text("헐 찾아주셨군요! 인스타로 DM주시면 소량의\n선물을 드릴게요! (slow._.heartbeat)")
-                                        .setFont(16, .medium)
-                                        .foregroundColor(Color("textColor"))
-                                        .padding(.horizontal, 16)
-                                }
-                                .frame(height: 500)
-                                .frame(maxWidth: .infinity)
-                                .background(.white)
-                                .cornerRadius(8)
-                                .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 4 )
-                            }
+                            settingButtonView("개발자 연락처", "mingyu@mingyu.run", "textColor", true) { }
                         }
                     }
                 }

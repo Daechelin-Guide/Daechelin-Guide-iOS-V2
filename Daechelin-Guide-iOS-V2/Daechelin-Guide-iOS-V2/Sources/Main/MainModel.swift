@@ -8,13 +8,14 @@
 import SwiftUI
 import Alamofire
 
-struct menu: Decodable {
-    var data: Data
+struct Menu: Decodable {
+    var date, localDate, breakfast, dinner, lunch: String?
 }
 
 class MainModel: ObservableObject {
     
-    func getMenuData(_ date: String ,completion: @escaping (menu?) -> Void) {
+    func getMenuData(_ date: String ,completion: @escaping (Menu?) -> Void) {
+        
         let components = date.components(separatedBy: "-")
         
         AF.request("\(API)/menu",
@@ -29,11 +30,12 @@ class MainModel: ObservableObject {
         ) { $0.timeoutInterval = 5 }
             .validate()
             .responseData { response in
+                
                 switch response.result {
                     
                 case .success:
                     guard let value = response.value else { return }
-                    guard let result = try? JSONDecoder().decode(menu.self, from: value) else { return }
+                    guard let result = try? JSONDecoder().decode(Menu.self, from: value) else { return }
                     
                     completion(result)
                     

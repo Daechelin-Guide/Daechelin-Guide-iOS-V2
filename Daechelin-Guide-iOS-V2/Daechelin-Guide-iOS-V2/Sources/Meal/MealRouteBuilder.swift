@@ -13,8 +13,11 @@ struct MealRouteBuilder: RouteBuilder {
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                MealView(week: items.getValue(key: "week")!, date: items.getValue(key: "date")!,
-                         mealTime: items.getValue(key: "mealTime")!, navigator: navigator)
+                MealView(mealTime: items.getValue(key: "mealTime") ?? "",
+                         menu: items.getValue(key: "menu") ?? "메뉴를 불러오는 중...",
+                         localDate: items.getValue(key: "localDate") ?? "",
+                         week: items.getValue(key: "week") ?? "",
+                         navigator: navigator)
                     .navigationBarHidden(true)
             }
         }

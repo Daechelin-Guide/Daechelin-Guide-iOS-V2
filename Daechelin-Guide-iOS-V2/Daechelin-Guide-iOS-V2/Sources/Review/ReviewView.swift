@@ -11,11 +11,12 @@ import Cosmos
 
 struct ReviewView: View {
     
-    @State var menu: String
-    
     @State var review: String = ""
     
     @State var star: Double = 0
+    
+    @State var localDate: String
+    
     @State var updateOnTouch: Bool = true
     
     @State var buttonDisabled: Bool = true
@@ -52,7 +53,9 @@ struct ReviewView: View {
                         Spacer()
                         
                         Button(action: {
-                                model.postReview(star: star, message: review, menu: menu, navigator: navigator)
+                            
+                            model.postReview(star: star, message: review, localDate: localDate, navigator: navigator)
+                            
                                 navigator.back(isAnimated: true)
                         }) {
                             Text("완료")

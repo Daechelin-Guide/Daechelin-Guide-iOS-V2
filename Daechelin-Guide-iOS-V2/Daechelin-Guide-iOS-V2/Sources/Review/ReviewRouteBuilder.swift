@@ -13,8 +13,9 @@ struct ReviewlRouteBuilder: RouteBuilder {
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                ReviewView(menu: items.getValue(key: "menu")!, navigator: navigator)
-                    .navigationBarHidden(true)
+                ReviewView(localDate: items.getValue(key: "localDate")!,
+                           navigator: navigator)
+                .navigationBarHidden(true)
             }
         }
     }

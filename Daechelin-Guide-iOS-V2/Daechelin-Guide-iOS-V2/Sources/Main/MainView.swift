@@ -20,6 +20,9 @@ struct MainView: View {
     @State var dinner: String = "석식이 없는 날입니다 :)"
     
     @State var date: String = getNowDate()
+    
+    @State var localDate: String = ""
+    
     @State var mealTime: String = ""
     
     @ObservedObject var modal = MainModel()
@@ -41,7 +44,9 @@ struct MainView: View {
                         }
                     }
                 }
+            
         } else {
+            
             VStack(spacing: 0) {
                 
                 HStack {
@@ -75,7 +80,7 @@ struct MainView: View {
                         
                         HStack(spacing: 10) {
                             Button(action: {
-                                date = minus24Hours(from: date)!
+                                date = minus24Hours(from: localDate)!
                                 
                                 getMenu(date)
                             }) {
@@ -100,7 +105,7 @@ struct MainView: View {
                             }
                             
                             Button(action: {
-                                date = add24Hours(from: date)!
+                                date = add24Hours(from: localDate)!
                                 
                                 getMenu(date)
                             }) {
@@ -112,9 +117,10 @@ struct MainView: View {
                         MenuView("조식", breakfast) {
                             if breakfast != "조식이 없는 날입니다 :)" {
                                 navigator.next(paths: ["Meal"], items: [
+                                    "mealTime": "break",
+                                    "menu": breakfast,
                                     "week": week,
-                                    "date": date,
-                                    "mealTime": "break"
+                                    "localDate": localDate
                                 ], isAnimated: true)
                             }
                         }
@@ -122,19 +128,21 @@ struct MainView: View {
                         MenuView("중식", lunch) {
                             if lunch != "중식이 없는 날입니다 :)" {
                                 navigator.next(paths: ["Meal"], items: [
+                                    "mealTime": "lunch",
+                                    "menu": lunch,
                                     "week": week,
-                                    "date": date,
-                                    "mealTime": "lunch"
+                                    "localDate": localDate
                                 ], isAnimated: true)
                             }
                         }
                         
                         MenuView("석식", dinner) {
-                            if ( dinner == "석식이 없는 날입니다 :)" ) {
+                            if ( dinner != "석식이 없는 날입니다 :)" ) {
                                 navigator.next(paths: ["Meal"], items: [
+                                    "mealTime": "dinner",
+                                    "menu": dinner,
                                     "week": week,
-                                    "date": date,
-                                    "mealTime": "dinner"
+                                    "localDate": localDate
                                 ], isAnimated: true)
                             }
                         }
@@ -189,24 +197,6 @@ struct MainView: View {
                 .refreshable {
                     getMenu(date)
                 }
-                .gesture(
-                    DragGesture()
-                        .onEnded({ value in
-                            if value.translation.width > 0 {
-                                withAnimation(.spring()) {
-                                    date = minus24Hours(from: date)!
-                                    
-                                    getMenu(date)
-                                }
-                            } else if value.translation.width < 0 {
-                                withAnimation(.spring()) {
-                                    date = add24Hours(from: date)!
-                                    
-                                    getMenu(date)
-                                }
-                            }
-                        })
-                )
             }
         }
         
@@ -217,11 +207,12 @@ struct MainView: View {
         modal.getMenuData(date) { result in
             guard let result = result else { return }
             
-            breakfast = result.data.breakfast ?? "조식이 없는 날입니다 :)"
-            lunch = result.data.lunch ?? "중식이 없는 날입니다 :)"
-            dinner = result.data.dinner ?? "석식이 없는 날입니다 :)"
-            week = result.data.week!
-            self.date = result.data.date
+            breakfast = result.breakfast ?? "조식이 없는 날입니다 :)"
+            lunch = result.lunch ?? "중식이 없는 날입니다 :)"
+            dinner = result.dinner ?? "석식이 없는 날입니다 :)"
+            week = result.date!
+            localDate = result.localDate!
+            self.date = result.date!
         }
     }
     
