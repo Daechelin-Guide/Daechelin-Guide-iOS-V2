@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5252EEB129F7C10A007D78D2 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252EEB029F7C10A007D78D2 /* Requests.swift */; };
-		5258064D29D929DC00725943 /* RankingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5258064C29D929DC00725943 /* RankingCellView.swift */; };
 		528D4CC62A162221008A0F7A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528D4CC52A162221008A0F7A /* Colors.swift */; };
 		528D4CC82A162329008A0F7A /* ColorExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528D4CC72A162329008A0F7A /* ColorExtenstion.swift */; };
 		52A48A3A29DA4E6000F0E509 /* settingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48A3929DA4E6000F0E509 /* settingButtonView.swift */; };
@@ -51,7 +50,6 @@
 /* Begin PBXFileReference section */
 		5252EEB029F7C10A007D78D2 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		5258052729D889A900725943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5258064C29D929DC00725943 /* RankingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCellView.swift; sourceTree = "<group>"; };
 		528D4CC52A162221008A0F7A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		528D4CC72A162329008A0F7A /* ColorExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtenstion.swift; sourceTree = "<group>"; };
 		52A48A3929DA4E6000F0E509 /* settingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingButtonView.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				52ED108B29D7E2BC009A4890 /* RankingView.swift */,
 				52ED108D29D7E2C6009A4890 /* RankingRouteBuilder.swift */,
 				52ED108F29D7E2CE009A4890 /* RankingModel.swift */,
-				5258064C29D929DC00725943 /* RankingCellView.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				52ED108429D7E066009A4890 /* AppMain.swift in Sources */,
 				52ED106E29D7E066009A4890 /* MealRouteBuilder.swift in Sources */,
 				52ED107729D7E066009A4890 /* MainRouteBuilder.swift in Sources */,
-				5258064D29D929DC00725943 /* RankingCellView.swift in Sources */,
 				52ED108729D7E241009A4890 /* ReviewView.swift in Sources */,
 				52ED109C29D83B86009A4890 /* NavigationExtensions.swift in Sources */,
 				52ED106D29D7E066009A4890 /* LaunchScreenView.swift in Sources */,

@@ -22,6 +22,8 @@ struct RankingView: View {
     @State var rankingData: [MealData] = []
     @State var rankId = 1
     
+    @State var strokeColor: Color = Colors.breakfast.color
+    
     let navigator: LinkNavigatorType
     
     var body: some View {
@@ -34,27 +36,39 @@ struct RankingView: View {
                     
                     ForEach(rankingData, id: \.self) { data in
                         
-                        VStack {
-                            
-                            Text("\(data.id) 위 : \(data.mealDate)")
-                            
-                            VStack {
+                        HStack {
+        
+                            VStack(alignment: .leading) {
+                                
+                                Text("👑 \(data.id) 위 : \(data.mealDate)")
+                                    .setFont(20, .regular)
+                                    .padding(.top, 20)
+                                
                                 Text("\(data.meal)")
                                     .setFont(14, .regular)
                                     .foregroundColor(Colors.text.color)
                                     .multilineTextAlignment(.leading)
+                                    .padding(.bottom, 20)
+                                    .padding(.trailing, 40)
                             }
                             .padding(.leading, 20)
                             
+                            Spacer()
                         }
-                        .padding(.horizontal, 20)
-                        .frame(height: 120)
+                        .frame(height: 100)
                         .frame(maxWidth:  .infinity)
                         .background(.white)
                         .cornerRadius(12)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(strokeColor, lineWidth: 1)
+                        )
                         .autocapitalization(.none)
+                        .padding(.top, 10)
                     }
+                    .padding(.top, 66)
                 }
+                .padding(.horizontal, 16)
                 .onAppear {
                     getRank()
                 }
@@ -66,52 +80,103 @@ struct RankingView: View {
                     
                     Button(action: {
                         mealTime = "breakfast"
-                        rankingData = []
-                        rankId = 1
                         getRank()
                     }) {
-                        Text("조식 랭킹")
-                            .setFont(16, .semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 66, height: 26)
-                            .background(AnyView(Colors.breakfast.color))
-                            .cornerRadius(13)
+                        if mealTime == "breakfast" {
+                            Text("조식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(.white)
+                                .frame(width: 110, height: 26)
+                                .background(Colors.breakfast.color)
+                                .cornerRadius(10)
+                        } else {
+                            Text("조식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(Colors.text.color)
+                                .frame(width: 110, height: 26)
+                                .background(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Colors.breakfast.color, lineWidth: 1)
+                                )
+                                .cornerRadius(10)
+                        }
                     }
+                    
+                    Spacer()
                     
                     Button(action: {
                         mealTime = "lunch"
-                        rankingData = []
-                        rankId = 1
                         getRank()
                     }) {
-                        Text("중식 랭킹")
-                            .setFont(16, .semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 66, height: 26)
-                            .background(AnyView(Colors.lunch.color))
-                            .cornerRadius(13)
+                        if mealTime == "lunch" {
+                            Text("중식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(.white)
+                                .frame(width: 110, height: 26)
+                                .background(Colors.lunch.color)
+                                .cornerRadius(10)
+                        } else {
+                            Text("중식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(Colors.text.color)
+                                .frame(width: 110, height: 26)
+                                .background(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Colors.lunch.color, lineWidth: 1)
+                                )
+                                .cornerRadius(10)
+                        }
                     }
+                    
+                    Spacer()
                     
                     Button(action: {
                         mealTime = "dinner"
-                        rankingData = []
-                        rankId = 1
                         getRank()
                     }) {
-                        Text("석식 랭킹")
-                            .setFont(16, .semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 66, height: 26)
-                            .background(AnyView(Colors.dinner.color))
-                            .cornerRadius(13)
+                        if mealTime == "dinner" {
+                            Text("석식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(.white)
+                                .frame(width: 110, height: 26)
+                                .background(Colors.dinner.color)
+                                .cornerRadius(10)
+                        } else {
+                            Text("석식 랭킹")
+                                .setFont(16, .medium)
+                                .foregroundColor(Colors.text.color)
+                                .frame(width: 110, height: 26)
+                                .background(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Colors.dinner.color, lineWidth: 1)
+                                )
+                                .cornerRadius(10)
+                        }
                     }
                 }
-                .frame(height: 40)
+                .padding(.horizontal, 16)
+                .padding(.top, 20)
             }
         }
     }
     
     func getRank() {
+        
+        switch mealTime {
+            
+        case "lunch":
+            strokeColor =  Colors.lunch.color
+        case "dinner":
+            strokeColor =  Colors.dinner.color
+        default:
+            strokeColor =  Colors.breakfast.color
+        }
+        
+        rankingData = []
+        rankId = 1
         
         model.getRankingData(mealTime: mealTime) { data in
             let meals = data.response.map { $0.menu.meal }

@@ -89,7 +89,7 @@ struct SettingView: View {
                         
                         settingButtonView("현재 버전", "2.1.0", true) { }
                         
-                        settingButtonView("변경 내용", "5배 빨라진 급식 로딩!", true) { }
+                        settingButtonView("변경 내용", "대슐랭 랭킹 추가, 속도 개선", true) { }
                     }
                     
                     VStack {
