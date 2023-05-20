@@ -10,10 +10,7 @@ import Alamofire
 
 struct Comment: Decodable {
     var commentId: Int?
-    var message: String?
-    var date: String?
-    var menu: String?
-    var createdDate: String?
+    var message, date, menu, createdDate: String?
 }
 
 class commentModel: ObservableObject {
@@ -51,7 +48,6 @@ class commentModel: ObservableObject {
                 print("댓글성공")
                 
             case .failure:
-                commentCompletion(nil)
                 print("댓글실패")
             }
         }

@@ -36,7 +36,7 @@ struct Navigation<Content: View>: View {
                         
                         Text(title)
                             .setFont(18, .semibold)
-                            .foregroundColor(Color("textColor"))
+                            .foregroundColor(Colors.text.color)
                     }
                     Spacer()
                 }

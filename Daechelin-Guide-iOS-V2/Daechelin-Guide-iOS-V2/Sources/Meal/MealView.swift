@@ -10,7 +10,7 @@ import LinkNavigator
 import Cosmos
 
 struct MealView: View {
-
+    
     //조식.중식.석식 구분
     @State var mealTime: String
     
@@ -23,13 +23,28 @@ struct MealView: View {
     //날짜
     @State var week: String
     
-    @State var star: Double = 0
+    @State var star: Double = 0.0
+    
+    @State var message: [String] = []
     
     @State var updateOnTouch: Bool = false
     
     @State var mealTimeStr: String = "조식"
     
-    @State var message:[String] = []
+    var menuColor: Color {
+        
+        switch mealTimeStr {
+            
+        case "중식":
+            return Colors.lunch.color
+        case "석식":
+            return Colors.dinner.color
+        default:
+            return Colors.breakfast.color
+        }
+    }
+    
+    @State var data:[String] = []
     
     @ObservedObject var mealModal = mealModel()
     
@@ -45,7 +60,7 @@ struct MealView: View {
                     Text(String(week.dropFirst(6)))
                     
                         .setFont(18, .medium)
-                        .foregroundColor(Color("textColor"))
+                        .foregroundColor(Colors.text.color)
                         .padding(.top, 20)
                     
                     MealTimeView(mealTimeStr)
@@ -54,11 +69,11 @@ struct MealView: View {
                     
                     Divider()
                         .frame(width: 220, height: 1)
-                        .background(Color("\(mealTimeStr)Color").opacity(0.5))
+                        .background(menuColor.opacity(0.5))
                     
                     Text(menu.replacingOccurrences(of: ",", with: "\n"))
                         .setFont(16, .regular)
-                        .foregroundColor(Color("textColor"))
+                        .foregroundColor(Colors.text.color)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 20)
                 }
@@ -67,14 +82,14 @@ struct MealView: View {
                 .cornerRadius(12)
                 .overlay(
                     RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
+                        .stroke(menuColor, lineWidth: 1)
                 )
                 .autocapitalization(.none)
                 
                 ZStack {
                     ScrollView(showsIndicators: false) {
                         
-                        ForEach(Array(Set(message)).sorted().reversed(), id: \.self) { data in
+                        ForEach(message.reversed(), id: \.self) { data in
                             CommentCellView(data: data)
                         }
                         .padding(.top, 10)
@@ -83,7 +98,7 @@ struct MealView: View {
                     GeometryReader { geo in
                         
                         Button(action: {
-                            navigator.next(paths: ["Review"], items: ["localDate": localDate], isAnimated: true)
+                            navigator.next(paths: ["review"], items: ["mealTime": mealTime ,"localDate": localDate], isAnimated: true)
                         }) {
                             Image("\(mealTimeStr)")
                                 .resizable()
@@ -92,7 +107,7 @@ struct MealView: View {
                                 .cornerRadius(34)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 34)
-                                        .stroke(Color("\(mealTimeStr)Color"), lineWidth: 1)
+                                        .stroke(menuColor, lineWidth: 1)
                                 )
                                 .autocapitalization(.none)
                         }
@@ -100,24 +115,32 @@ struct MealView: View {
                                   y: geo.size.height - 44)
                     }
                 }
-                
                 .onAppear {
                     
+                    getReview(localDate: localDate, mealTime: mealTime)
+                   
                     switch mealTime {
+                        
                     case "lunch": mealTimeStr = "중식"
                     case "dinner": mealTimeStr = "석식"
                     default: mealTimeStr = "조식"
                     }
-                    
-                    mealModal.getMealData(localDate: localDate, mealTime: mealTime) { result in
-                        
-                        guard let result = result else { return }
-                        print(result)
-                        
-                    }
+                }
+                .refreshable {
+                    getReview(localDate: localDate, mealTime: mealTime)
                 }
             }
             .padding([.horizontal, .top], 16)
+        }
+    }
+    
+    func getReview(localDate: String, mealTime: String) {
+        
+        mealModal.getReviewData(localDate: localDate, mealTime: mealTime) { data in
+            
+            star = data.totalStar
+            message = data.response.map { $0.message }
+            print(message)
         }
     }
 }

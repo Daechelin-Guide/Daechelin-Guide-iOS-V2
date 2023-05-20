@@ -11,6 +11,8 @@ import Cosmos
 
 struct ReviewView: View {
     
+    @State var mealTime: String
+    
     @State var review: String = ""
     
     @State var star: Double = 0
@@ -34,13 +36,14 @@ struct ReviewView: View {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $review)
                         .setFont(15, .regular)
-                        .foregroundColor(Color("textColor"))
+                        .foregroundColor(Colors.text.color)
                         .padding([.top, .leading], 10)
                     
                     if review.isEmpty {
+                        
                         Text("리뷰를 작성해주세요.")
                             .setFont(15, .regular)
-                            .foregroundColor(Color("textColor").opacity(0.5))
+                            .foregroundColor(Colors.text.color.opacity(0.5))
                             .padding(.leading, 16)
                             .padding(.top, 18)
                     }
@@ -48,19 +51,16 @@ struct ReviewView: View {
                     HStack {
                         Text("\(review.count) / 50")
                             .setFont(15, .bold)
-                            .foregroundColor(Color("textColor").opacity(0.6))
+                            .foregroundColor(Colors.text.color.opacity(0.6))
                         
                         Spacer()
                         
                         Button(action: {
-                            
-                            model.postReview(star: star, message: review, localDate: localDate, navigator: navigator)
-                            
-                                navigator.back(isAnimated: true)
+                            model.postReview(star: star, message: review, mealTime: mealTime, localDate: localDate, navigator: navigator)
                         }) {
                             Text("완료")
                                 .setFont(15, .bold)
-                                .foregroundColor(Color("textColor").opacity(0.6))
+                                .foregroundColor(Colors.text.color.opacity(0.6))
                         }
                         .disabled(isButtonDisabled(review.count, 50))
                     }
@@ -71,7 +71,6 @@ struct ReviewView: View {
                 .background(.white)
                 .frame(height: 120)
                 .cornerRadius(12)
-                
                 
                 MyCosmosView(star: $star, updateOnTouch: $updateOnTouch)
                     .padding(.leading, 8)

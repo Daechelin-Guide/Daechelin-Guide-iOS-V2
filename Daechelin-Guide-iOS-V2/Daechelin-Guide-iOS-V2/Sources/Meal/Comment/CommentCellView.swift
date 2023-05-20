@@ -10,6 +10,7 @@ import SwiftUI
 struct CommentCellView: View {
     
     let data: String
+    
     @State var modifier: [String] = ["멋진", "우아한", "귀여운", "사랑스러운", "새침한", "화려한", "품격있는"]
     
     @State private var randomModifier: String = "귀여운"
@@ -22,7 +23,7 @@ struct CommentCellView: View {
                 .frame(width: 48, height: 48)
                 .overlay(
                     RoundedRectangle(cornerRadius: 32)
-                        .stroke(Color("textColor"), lineWidth: 0.5)
+                        .stroke(Colors.text.color, lineWidth: 0.5)
                 )
             
             VStack(alignment: .leading,spacing: 2) {
@@ -38,7 +39,6 @@ struct CommentCellView: View {
         .frame(height: 48)
         .onAppear {
             randomModifier = modifier.randomElement() ?? "귀여운"
-            
         }
     }
 }

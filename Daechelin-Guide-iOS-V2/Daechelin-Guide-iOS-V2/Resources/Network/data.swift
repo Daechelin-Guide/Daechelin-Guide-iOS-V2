@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Data: Decodable {
+struct MenuData: Decodable {
     var date: String
     var breakfast: String?
     var dinner: String?

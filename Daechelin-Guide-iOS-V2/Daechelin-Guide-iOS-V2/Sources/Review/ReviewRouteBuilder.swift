@@ -8,12 +8,14 @@
 import LinkNavigator
 
 struct ReviewlRouteBuilder: RouteBuilder {
-    var matchPath: String { "Review" }
+    
+    var matchPath: String { "review" }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in
             return WrappingController(matchPath: matchPath) {
-                ReviewView(localDate: items.getValue(key: "localDate")!,
+                ReviewView(mealTime: items.getValue(key: "mealTime")!,
+                           localDate: items.getValue(key: "localDate")!,
                            navigator: navigator)
                 .navigationBarHidden(true)
             }

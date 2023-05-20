@@ -94,7 +94,7 @@ struct MainView: View {
                             }) {
                                 Text("\(week)")
                                     .setFont(14, .medium)
-                                    .foregroundColor(Color("textColor"))
+                                    .foregroundColor(Colors.text.color)
                                     .frame(width: 166 ,height: 30)
                                     .background(.white)
                                     .cornerRadius(15)
@@ -116,8 +116,8 @@ struct MainView: View {
                         
                         MenuView("조식", breakfast) {
                             if breakfast != "조식이 없는 날입니다 :)" {
-                                navigator.next(paths: ["Meal"], items: [
-                                    "mealTime": "break",
+                                navigator.next(paths: ["meal"], items: [
+                                    "mealTime": "breakfast",
                                     "menu": breakfast,
                                     "week": week,
                                     "localDate": localDate
@@ -127,7 +127,7 @@ struct MainView: View {
                         
                         MenuView("중식", lunch) {
                             if lunch != "중식이 없는 날입니다 :)" {
-                                navigator.next(paths: ["Meal"], items: [
+                                navigator.next(paths: ["meal"], items: [
                                     "mealTime": "lunch",
                                     "menu": lunch,
                                     "week": week,
@@ -138,7 +138,7 @@ struct MainView: View {
                         
                         MenuView("석식", dinner) {
                             if ( dinner != "석식이 없는 날입니다 :)" ) {
-                                navigator.next(paths: ["Meal"], items: [
+                                navigator.next(paths: ["meal"], items: [
                                     "mealTime": "dinner",
                                     "menu": dinner,
                                     "week": week,
@@ -152,11 +152,13 @@ struct MainView: View {
                             let alertModel = Alert(
                                 title: "앗!",
                                 message: "지금은 급식데이 기간이 아닌 것 같네요",
-                                buttons: [.init(title: "확인", style: .default, action: { print("확인") })],
+                                buttons: [.init(title: "확인", style: .default, action: {
+                                    print("확인")
+                                })],
                                 flagType: .default)
                             
                             navigator.alert(target: .default, model: alertModel)
-                            
+
                         }) {
                             HStack {
                                 Image("급식데이")
@@ -169,7 +171,7 @@ struct MainView: View {
                                     
                                     Text("급식데이 투표하러 가기")
                                         .setFont(14, .regular)
-                                        .foregroundColor(Color("textColor"))
+                                        .foregroundColor(Colors.text.color)
                                 }
                                 
                                 Spacer()
@@ -182,7 +184,7 @@ struct MainView: View {
                         .cornerRadius(12)
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color("급식데이Color"), lineWidth: 1)
+                                .stroke(Colors.mealday.color, lineWidth: 1)
                         )
                         .autocapitalization(.none)
                         
@@ -212,7 +214,6 @@ struct MainView: View {
             dinner = result.dinner ?? "석식이 없는 날입니다 :)"
             week = result.date!
             localDate = result.localDate!
-            self.date = result.date!
         }
     }
     

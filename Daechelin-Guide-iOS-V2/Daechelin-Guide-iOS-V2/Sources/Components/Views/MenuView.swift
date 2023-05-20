@@ -13,6 +13,19 @@ struct MenuView: View {
     let menu: String
     let action: () -> Void
     
+    var strokeColor: Color {
+        
+        switch mealTime {
+            
+        case "중식":
+            return Colors.lunch.color
+        case "석식":
+            return Colors.dinner.color
+        default:
+            return Colors.breakfast.color
+        }
+    }
+    
     init(_ mealTime: String,
          _ menu: String,
          _ action: @escaping () -> Void)
@@ -38,7 +51,7 @@ struct MenuView: View {
                 Text("\(menu)")
                     .setFont(14, .regular)
                     .padding(.leading, 20)
-                    .foregroundColor(Color("textColor"))
+                    .foregroundColor(Colors.text.color)
                     .multilineTextAlignment(.leading)
                 
                 Spacer()
@@ -52,7 +65,7 @@ struct MenuView: View {
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(Color("\(mealTime)Color"), lineWidth: 1)
+                .stroke(strokeColor, lineWidth: 1)
         )
         .autocapitalization(.none)
     }

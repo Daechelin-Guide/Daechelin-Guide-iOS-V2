@@ -28,7 +28,6 @@ public func tabBackgroundDownKeyborad() {
        let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
         keyWindow.endEditing(true)
     }
-
 }
 
 public func minus24Hours(from dateString: String) -> String? {

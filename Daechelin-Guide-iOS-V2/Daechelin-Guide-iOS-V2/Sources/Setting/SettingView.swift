@@ -26,6 +26,7 @@ struct SettingView: View {
                     
                     Text("개인정보 관리")
                         .setFont(18, .medium)
+                        .foregroundColor(Colors.text.color)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 20)
                     
@@ -36,7 +37,7 @@ struct SettingView: View {
                         HStack {
                             Text("개인정보 처리방침")
                                 .setFont(14, .regular)
-                                .foregroundColor(Color("textColor"))
+                                .foregroundColor(Colors.text.color)
                                 .padding(.leading, 10)
                             
                             Spacer()
@@ -53,7 +54,7 @@ struct SettingView: View {
                     
                     Text("앱 정보")
                         .setFont(18, .medium)
-                        .foregroundColor(Color("textColor"))
+                        .foregroundColor(Colors.text.color)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 20)
                     
@@ -64,7 +65,7 @@ struct SettingView: View {
                         HStack {
                             Text("버전 정보")
                                 .setFont(14, .regular)
-                                .foregroundColor(Color("textColor"))
+                                .foregroundColor(Colors.text.color)
                                 .padding(.leading, 10)
                             
                             Spacer()
@@ -86,9 +87,9 @@ struct SettingView: View {
                     
                     if isVersionInfoToggled {
                         
-                        settingButtonView("현재 버전", "2.1.0", "redTextColor", true) { }
+                        settingButtonView("현재 버전", "2.1.0", true) { }
                         
-                        settingButtonView("변경 내용", "5배 빨라진 로딩 속도!", "textColor", true) { }
+                        settingButtonView("변경 내용", "5배 빨라진 급식 로딩!", true) { }
                     }
                     
                     VStack {
@@ -99,7 +100,7 @@ struct SettingView: View {
                             HStack {
                                 Text("개발자 정보")
                                     .setFont(14, .regular)
-                                    .foregroundColor(Color("textColor"))
+                                    .foregroundColor(Colors.text.color)
                                     .padding(.leading, 10)
                                 
                                 Spacer()
@@ -121,11 +122,11 @@ struct SettingView: View {
                         
                         if isDeveloperInfoToggled {
                             
-                            settingButtonView("개발팀 이름", "대소고 A급 남자들", "redTextColor", true) { }
+                            settingButtonView("개발팀 이름", "대소고 A급 남자들", true) { }
                             
-                            settingButtonView("개발자 이름", "이민규", "textColor", true) { }
+                            settingButtonView("개발자 이름", "이민규", true) { }
                             
-                            settingButtonView("개발자 연락처", "mingyu@mingyu.run", "textColor", true) { }
+                            settingButtonView("개발자 연락처", "mingyu@mingyu.run", true) { }
                         }
                     }
                 }

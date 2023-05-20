@@ -8,27 +8,48 @@
 import SwiftUI
 import Alamofire
 
-struct Rank: Decodable, Hashable {
-    var star: Double?
-    var menu: String?
-    var date: String?
-    var review: Int?
+struct RankingData: Codable {
+    let date: String
+    let star: Double
+    let menu: Menus
+}
+
+struct Ranking: Codable {
+    let response: [RankingData]
 }
 
 class rankingModel: ObservableObject {
     
-    func getRankingData(rankingCompletion: @escaping ([Rank]?) -> Void) {
+    func getRankingData(mealTime: String, mealCompletion: @escaping (Ranking) -> Void) {
         
-        AF.request("\(API)/rank").responseDecodable(of: [Rank].self) { response in
-            switch response.result {
+        AF.request("\(API)/\(mealTime)/ranking",
+                   method: .get,
+                   encoding: URLEncoding.default
+        ) { $0.timeoutInterval = 5 }
+            .validate()
+            .responseData { response in
                 
-            case .success:
-                guard let result = response.value else { return }
-                rankingCompletion(result)
+                if let resdata = response.data {
+                    print(String(decoding: resdata, as: UTF8.self))
+                }
                 
-            case .failure(let error):
-                print("실패 : \n\(error)")
+                switch response.result {
+                    
+                case .success:
+                    if let data = response.data {
+                        
+                        let decoder = JSONDecoder()
+                        if let decodedData = try? decoder.decode(Ranking.self, from: data) {
+                            
+                            DispatchQueue.main.async {
+                                mealCompletion(decodedData)
+                            }
+                        }
+                    }
+                    
+                case .failure:
+                    print("메뉴 별점, 댓글 불러오기 실패")
+                }
             }
-        }
     }
 }

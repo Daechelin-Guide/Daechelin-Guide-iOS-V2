@@ -8,7 +8,8 @@
 import LinkNavigator
 
 struct MainRouteBuilder: RouteBuilder {
-    var matchPath: String { "Main" }
+    
+    var matchPath: String { "main" }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { navigator, items, dependency in

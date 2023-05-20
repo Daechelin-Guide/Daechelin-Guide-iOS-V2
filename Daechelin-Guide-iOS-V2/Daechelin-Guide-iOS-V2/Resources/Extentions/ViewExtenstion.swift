@@ -19,7 +19,7 @@ extension View {
     func setBackground() -> some View {
         self
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("backgroundColor").ignoresSafeArea())
+            .background(Colors.background.color.ignoresSafeArea())
             .onTapGesture {
                 tabBackgroundDownKeyborad()
             }

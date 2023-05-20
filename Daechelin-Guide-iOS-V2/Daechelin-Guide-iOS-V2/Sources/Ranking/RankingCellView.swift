@@ -9,25 +9,21 @@ import SwiftUI
 
 struct RankingCellView: View {
     
-    let data: Rank
-    
-    var id: Int {
-        return data.review!
-    }
-    
+    var rankingData: RankingData
+
     var body: some View {
         VStack {
             
-            Text("\(id) 위 : \(data.date ?? "없음")")
-            
+            Text("엄준식")
+
             VStack {
-                Text("\(data.menu ?? "급식이 모종의 이유로 사라졌어요 ㅠㅠ")")
+                Text("")
                     .setFont(14, .regular)
-                    .foregroundColor(Color("textColor"))
+                    .foregroundColor(Colors.text.color)
                     .multilineTextAlignment(.leading)
             }
             .padding(.leading, 20)
-            
+
         }
         .padding(.horizontal, 20)
         .frame(height: 120)

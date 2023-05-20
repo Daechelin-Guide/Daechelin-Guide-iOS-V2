@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-import Alamofire
 import LinkNavigator
 
 class ReviewModel: ObservableObject {
     
-    func postReview(star: Double, message: String, localDate: String, navigator: LinkNavigatorType) {
+    func postReview(star: Double, message: String, mealTime: String, localDate: String, navigator: LinkNavigatorType) {
+        
+        print(mealTime, localDate)
         
         if star == 0 {
-            print("별점이 0입니다.")
             
             let alertModel = Alert(
                 title: "앗!",
@@ -25,32 +25,26 @@ class ReviewModel: ObservableObject {
             navigator.alert(target: .default, model: alertModel)
         } else {
             
-            AF.request("\(API)/breakfast/review/create",
-                       method: .post,
-                       parameters: [
-                        "date": localDate
-                       ],
-                       encoding: JSONEncoding.default,
-                       headers: ["Content-Type": "application/json"]
-            ) { $0.timeoutInterval = 5 }
-                .validate()
-                .responseData { response in
-                    switch response.result {
-                        
-                    case .success:
-                        
-                        let alertModel = Alert(
-                            title: "성공!",
-                            message: "소중한 리뷰 감사합니다! :)",
-                            buttons: [.init(title: "확인", style: .default, action: { print("리뷰 성공적으로 보냄.") })],
-                            flagType: .default)
-                        
-                        navigator.alert(target: .default, model: alertModel)
-                        
-                    case .failure:
-                        print("Post 실패")
-                    }
-                }
+            let url = "/\(mealTime)/review/create?date=\(localDate)"
+            
+            let params: [String: Any] = ["star": star,
+                                         "message": message]
+            
+            Requests.simple(url, .post, params: params, failure: {
+                print("url: \(url)\n실패")
+            }) {
+                
+            }
+            
+            let alertModel = Alert(
+                title: "성공!",
+                message: "소중한 리뷰 감사합니다! :)",
+                buttons: [.init(title: "확인", style: .default, action: {
+                    navigator.back(isAnimated: true)
+                })],
+                flagType: .default)
+            
+            navigator.alert(target: .default, model: alertModel)
         }
         
     }

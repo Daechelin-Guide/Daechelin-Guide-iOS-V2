@@ -9,6 +9,7 @@ import SwiftUI
 import Alamofire
 
 struct Menu: Decodable {
+    
     var date, localDate, breakfast, dinner, lunch: String?
 }
 
@@ -41,7 +42,6 @@ class MainModel: ObservableObject {
                     
                 case .failure:
                     print("실패")
-                    completion(nil)
                 }
             }
     }
